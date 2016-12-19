@@ -1,0 +1,110 @@
+{
+  "docs": [
+    {
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true
+      },
+      "id": "c4371e08e25da28abe765756aafc10bb",
+      "ingestDate": "2016-12-17T03:58:38.998100Z",
+      "_rev": "12-99ae684047d272002504f2d54e16de03",
+      "@context": "http://dp.la/api/collections/context",
+      "score": 7.130277,
+      "@id": "http://dp.la/api/collections/c4371e08e25da28abe765756aafc10bb",
+      "title": "Mississippi, Alabama, Florida Survey",
+      "ingestionSequence": 27,
+      "@type": "dcmitype:Collection",
+      "ingestType": "collection",
+      "_id": "smithsonian--mississippi_alabama_florida_survey"
+    },
+    {
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true
+      },
+      "id": "d1e66b60d4cf4ffe083f87c0e264257f",
+      "ingestDate": "2016-12-17T03:58:05.291488Z",
+      "_rev": "12-c3ae4b6e2800d718fdf47433ef692645",
+      "@context": "http://dp.la/api/collections/context",
+      "score": 6.2389927,
+      "@id": "http://dp.la/api/collections/d1e66b60d4cf4ffe083f87c0e264257f",
+      "title": "Southwest Florida Shelf Ecosystem Study",
+      "ingestionSequence": 27,
+      "@type": "dcmitype:Collection",
+      "ingestType": "collection",
+      "_id": "smithsonian--southwest_florida_shelf_ecosystem_study"
+    },
+    {
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true
+      },
+      "id": "c9aed816410d2caba757e350eafa9549",
+      "ingestDate": "2016-12-17T03:58:09.325116Z",
+      "_rev": "12-d1f6843de602b58ecf340b6d977f59f4",
+      "@context": "http://dp.la/api/collections/context",
+      "score": 5.439603,
+      "@id": "http://dp.la/api/collections/c9aed816410d2caba757e350eafa9549",
+      "title": "Of Florida 1564 [Le Moyne De Morgues, Jacques]",
+      "ingestionSequence": 27,
+      "@type": "dcmitype:Collection",
+      "ingestType": "collection",
+      "_id": "smithsonian--of_florida_1564_[le_moyne_de_morgues_jacques]"
+    },
+    {
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true
+      },
+      "id": "8b5ca8ffcd07055d873129d62c3335e0",
+      "ingestDate": "2016-12-17T03:58:18.341542Z",
+      "_rev": "12-c4488966a95f6c920800d5e4cb138263",
+      "@context": "http://dp.la/api/collections/context",
+      "score": 4.4564233,
+      "@id": "http://dp.la/api/collections/8b5ca8ffcd07055d873129d62c3335e0",
+      "title": "Book of drawings by unidentified Cheyenne artist at Fort Marion, Florida 1875 August",
+      "ingestionSequence": 27,
+      "@type": "dcmitype:Collection",
+      "ingestType": "collection",
+      "_id": "smithsonian--book_of_drawings_by_unidentified_cheyenne_artist_at_fort_marion_florida_1875_august"
+    },
+    {
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true
+      },
+      "id": "653818b7ae933f638d447cdb613a9e54",
+      "ingestDate": "2016-12-17T03:58:04.590192Z",
+      "_rev": "12-0911ec2ac2d34f6e24de15840ee01607",
+      "@context": "http://dp.la/api/collections/context",
+      "score": 3.8035355,
+      "@id": "http://dp.la/api/collections/653818b7ae933f638d447cdb613a9e54",
+      "title": "Frank Hamilton Cushing photograph collection relating to excavations on the west coast of Florida 1895-1896",
+      "ingestionSequence": 27,
+      "@type": "dcmitype:Collection",
+      "ingestType": "collection",
+      "_id": "smithsonian--frank_hamilton_cushing_photograph_collection_relating_to_excavations_on_the_west_coast_of_florida_1895_1896"
+    },
+    {
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true
+      },
+      "id": "08a52feeaa0b26d2b7e3f85c924518f9",
+      "ingestDate": "2016-12-17T03:58:06.347697Z",
+      "_rev": "12-87a75299034a1b731f24cfb3daf7f614",
+      "@context": "http://dp.la/api/collections/context",
+      "score": 3.1731017,
+      "@id": "http://dp.la/api/collections/08a52feeaa0b26d2b7e3f85c924518f9",
+      "title": "Carved and painted masks and tablets, excavated at Key Marco, Florida, signed in lower left with Sawyer monogram 1896 [Sawyer, Wells 1863-1960]",
+      "ingestionSequence": 27,
+      "@type": "dcmitype:Collection",
+      "ingestType": "collection",
+      "_id": "smithsonian--carved_and_painted_masks_and_tablets_excavated_at_key_marco_florida_signed_in_lower_left_with_sawyer_monogram_1896_[sawyer_wells_1863_1960]"
+    }
+  ],
+  "facets": [],
+  "limit": 10,
+  "count": 6,
+  "start": 0
+}

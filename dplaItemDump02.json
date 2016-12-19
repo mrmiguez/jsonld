@@ -1,0 +1,2050 @@
+{
+  "docs": [
+    {
+      "id": "9f695d8c16a4978061a25076a43aa11f",
+      "provider": {
+        "name": "Digital Commonwealth",
+        "@id": "http://dp.la/api/contributor/digital-commonwealth"
+      },
+      "object": "http://ark.digitalcommonwealth.org/ark:/50959/6682xj30d/thumbnail",
+      "@id": "http://dp.la/api/items/9f695d8c16a4978061a25076a43aa11f",
+      "ingestDate": "2016-03-18T16:02:39.235576Z",
+      "_id": "bpl--oai:digitalcommonwealth.org:commonwealth:6682xj30d",
+      "dataProvider": "Boston Public Library",
+      "@type": "ore:Aggregation",
+      "isShownAt": "http://ark.digitalcommonwealth.org/ark:/50959/6682xj30d",
+      "_rev": "6-e07c66f311f4751fb5b8a150c059b2f2",
+      "aggregatedCHO": "#sourceResource",
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true,
+        "sourceResource": {
+          "title": "Kittens"
+        }
+      },
+      "score": 12.4925,
+      "ingestType": "item",
+      "sourceResource": {
+        "identifier": [
+          "Local accession: 08_06_000884"
+        ],
+        "format": [
+          "Photographs",
+          "Glass negatives"
+        ],
+        "creator": "Jones, Leslie, 1886-1967",
+        "@id": "http://dp.la/api/items/9f695d8c16a4978061a25076a43aa11f#sourceResource",
+        "rights": "Copyright (c) Leslie Jones. This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).",
+        "extent": "1 negative : glass, black 4 x 5 in.",
+        "subject": [
+          {
+            "name": "Cats"
+          },
+          {
+            "name": "Baby animals"
+          }
+        ],
+        "type": "image",
+        "relation": [
+          "Leslie Jones Collection",
+          "Leslie Jones Collection. Animals: Dogs & Cats"
+        ],
+        "title": "Kittens",
+        "description": [
+          "Title from information provided by Leslie Jones or the Boston Public Library on the negative or negative sleeve.",
+          "Date supplied by cataloger."
+        ],
+        "stateLocatedIn": [
+          {
+            "name": "Massachusetts"
+          }
+        ],
+        "date": {
+          "displayDate": "1917-1934",
+          "begin": "1917",
+          "end": "1934"
+        },
+        "collection": {
+          "id": "460c76299e1b0a46afea352b1ab8f556",
+          "@id": "http://dp.la/api/collections/460c76299e1b0a46afea352b1ab8f556",
+          "description": "",
+          "title": "Leslie Jones Collection"
+        }
+      },
+      "originalRecord": {
+        "id": "oai:digitalcommonwealth.org:commonwealth:6682xj30d",
+        "header": {
+          "setSpec": "commonwealth:2j62s484w",
+          "identifier": "oai:digitalcommonwealth.org:commonwealth:6682xj30d",
+          "datestamp": "2016-03-14T14:42:06Z"
+        },
+        "provider": {
+          "name": "Digital Commonwealth",
+          "@id": "http://dp.la/api/contributor/digital-commonwealth"
+        },
+        "collection": {
+          "id": "460c76299e1b0a46afea352b1ab8f556",
+          "@id": "http://dp.la/api/collections/460c76299e1b0a46afea352b1ab8f556",
+          "description": "",
+          "title": "Leslie Jones Collection"
+        },
+        "metadata": {
+          "mods:mods": {
+            "xsi:schemaLocation": "http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd",
+            "mods:physicalDescription": {
+              "mods:digitalOrigin": "reformatted digital",
+              "mods:internetMediaType": [
+                "image/tiff",
+                "image/jpeg"
+              ],
+              "mods:extent": "1 negative : glass, black  4 x 5 in."
+            },
+            "mods:typeOfResource": "still image",
+            "mods:relatedItem": [
+              {
+                "type": "host",
+                "mods:titleInfo": {
+                  "mods:title": "Leslie Jones Collection"
+                }
+              },
+              {
+                "type": "series",
+                "mods:titleInfo": {
+                  "mods:title": "Animals: Dogs & Cats"
+                }
+              }
+            ],
+            "xmlns:xlink": "http://www.w3.org/1999/xlink",
+            "version": "3.4",
+            "mods:name": {
+              "type": "personal",
+              "authority": "local",
+              "mods:role": {
+                "mods:roleTerm": {
+                  "authorityURI": "http://id.loc.gov/vocabulary/relators",
+                  "authority": "marcrelator",
+                  "type": "text",
+                  "#text": "Photographer",
+                  "valueURI": "http://id.loc.gov/vocabulary/relators/pht"
+                }
+              },
+              "mods:namePart": [
+                "Jones, Leslie",
+                {
+                  "type": "date",
+                  "#text": "1886-1967"
+                }
+              ]
+            },
+            "mods:recordInfo": {
+              "mods:recordContentSource": "Boston Public Library",
+              "mods:languageOfCataloging": {
+                "mods:languageTerm": {
+                  "authorityURI": "http://id.loc.gov/vocabulary/iso639-2",
+                  "authority": "iso639-2b",
+                  "type": "text",
+                  "#text": "English",
+                  "valueURI": "http://id.loc.gov/vocabulary/iso639-2/eng"
+                }
+              },
+              "mods:recordOrigin": "human prepared",
+              "mods:descriptionStandard": {
+                "authority": "marcdescription",
+                "#text": "gihc"
+              }
+            },
+            "mods:accessCondition": [
+              {
+                "displayLabel": "rights",
+                "#text": "Copyright (c) Leslie Jones.",
+                "type": "use and reproduction"
+              },
+              {
+                "displayLabel": "license",
+                "#text": "This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).",
+                "type": "use and reproduction"
+              }
+            ],
+            "mods:subject": [
+              {
+                "mods:topic": "Cats",
+                "authority": "lctgm"
+              },
+              {
+                "mods:topic": "Baby animals",
+                "authority": "lctgm"
+              }
+            ],
+            "mods:genre": [
+              {
+                "displayLabel": "general",
+                "authority": "gmgpc",
+                "authorityURI": "http://id.loc.gov/vocabulary/graphicMaterials",
+                "#text": "Photographs",
+                "valueURI": "http://id.loc.gov/vocabulary/graphicMaterials/tgm007721"
+              },
+              {
+                "displayLabel": "specific",
+                "authority": "gmgpc",
+                "authorityURI": "http://id.loc.gov/vocabulary/graphicMaterials",
+                "#text": "Glass negatives",
+                "valueURI": "http://id.loc.gov/vocabulary/graphicMaterials/tgm004561"
+              }
+            ],
+            "mods:location": [
+              {
+                "mods:holdingSimple": {
+                  "mods:copyInformation": {
+                    "mods:subLocation": "Print Department"
+                  }
+                },
+                "mods:physicalLocation": "Boston Public Library"
+              },
+              {
+                "mods:url": [
+                  {
+                    "access": "preview",
+                    "#text": "http://ark.digitalcommonwealth.org/ark:/50959/6682xj30d/thumbnail"
+                  },
+                  {
+                    "access": "object in context",
+                    "#text": "http://ark.digitalcommonwealth.org/ark:/50959/6682xj30d",
+                    "usage": "primary"
+                  }
+                ]
+              }
+            ],
+            "mods:identifier": [
+              {
+                "type": "local-accession",
+                "#text": "08_06_000884"
+              },
+              {
+                "type": "uri",
+                "#text": "http://ark.digitalcommonwealth.org/ark:/50959/6682xj30d"
+              }
+            ],
+            "xmlns:mods": "http://www.loc.gov/mods/v3",
+            "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "mods:titleInfo": {
+              "mods:title": "Kittens",
+              "usage": "primary"
+            },
+            "mods:note": [
+              "Title from information provided by Leslie Jones or the Boston Public Library on the negative or negative sleeve.",
+              "Date supplied by cataloger."
+            ],
+            "mods:originInfo": {
+              "mods:dateCreated": [
+                {
+                  "point": "start",
+                  "qualifier": "approximate",
+                  "keyDate": "yes",
+                  "#text": "1917",
+                  "encoding": "w3cdtf"
+                },
+                {
+                  "point": "end",
+                  "qualifier": "approximate",
+                  "#text": "1934",
+                  "encoding": "w3cdtf"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "ingestionSequence": 19,
+      "@context": "http://dp.la/api/items/context"
+    },
+    {
+      "id": "b555199f1c48858c135ce7f14f1dcb74",
+      "provider": {
+        "name": "Empire State Digital Network",
+        "@id": "http://dp.la/api/contributor/esdn"
+      },
+      "object": "http://digitalarchives.queenslibrary.org/vital/access/services/Download/aql:5200/JPGSOURCE1-PhotographFront?view=true",
+      "@id": "http://dp.la/api/items/b555199f1c48858c135ce7f14f1dcb74",
+      "ingestDate": "2016-09-21",
+      "_id": "b555199f1c48858c135ce7f14f1dcb74",
+      "dataProvider": "Queens Borough Public Library",
+      "isShownAt": "http://digitalarchives.queenslibrary.org/vital/access/manager/Repository/aql:5200",
+      "aggregatedCHO": "#sourceResource",
+      "score": 12.4925,
+      "@context": "http://dp.la/api/items/context",
+      "sourceResource": {
+        "creator": [
+          "William E. Case, Sr."
+        ],
+        "subject": [
+          {
+            "name": "Kittens"
+          },
+          {
+            "name": "Jamaica, NY"
+          },
+          {
+            "name": "Jamaica (New York, N.Y.)"
+          },
+          {
+            "name": "Queens (New York, N.Y.)"
+          }
+        ],
+        "type": "image",
+        "relation": [
+          "Queens Borough Public Library-Wiliam Erwin Photographs"
+        ],
+        "format": [
+          "unknown material on plate glass"
+        ],
+        "@id": "http://dp.la/api/items/b555199f1c48858c135ce7f14f1dcb74#sourceResource",
+        "description": [
+          "Group of kittens playing in a basket in the yard of a house."
+        ],
+        "rights": "The Queens Library is interested in learning more about items you've seen on our websites or elsewhere online. If you have any more information about an item or its copyright status, we want to hear from you. Please contact digitalarchive@queenslibrary.org with your contact information and a link to the relevant content.",
+        "title": [
+          "Kittens"
+        ],
+        "spatial": [
+          {
+            "name": "Jamaica, NY",
+            "coordinates": "40.69149, -73.80569"
+          },
+          {
+            "name": "Jamaica (New York, N.Y.)",
+            "coordinates": "40.69149, -73.80569"
+          },
+          {
+            "name": "Queens (New York, N.Y.)",
+            "coordinates": "40.65749, -73.83875"
+          }
+        ],
+        "collection": [
+          {
+            "id": "_:15729705c4e185",
+            "@id": "_:15729705c4e185",
+            "title": [
+              "Queens Borough Public Library-Wiliam Erwin Photographs"
+            ]
+          }
+        ]
+      },
+      "originalRecord": "http://ldp.dp.la/ldp/original_record/b555199f1c48858c135ce7f14f1dcb74.xml",
+      "ingestionSequence": 999999,
+      "ingestType": "item"
+    },
+    {
+      "id": "73a769ca8b0c2c5da31fd8bdad7f8d92",
+      "provider": {
+        "name": "The New York Public Library",
+        "@id": "http://dp.la/api/contributor/nypl"
+      },
+      "object": "http://images.nypl.org/index.php?id=815559&t=t",
+      "@id": "http://dp.la/api/items/73a769ca8b0c2c5da31fd8bdad7f8d92",
+      "ingestDate": "2016-08-10T02:28:53.995742Z",
+      "_id": "nypl--510d47e0-ea68-a3d9-e040-e00a18064a99",
+      "dataProvider": "Art and Picture Collection. The New York Public Library",
+      "@type": "ore:Aggregation",
+      "isShownAt": "http://digitalcollections.nypl.org/items/510d47e0-ea68-a3d9-e040-e00a18064a99",
+      "_rev": "6-9c015dc6279d4416a41593bc2f2533cb",
+      "aggregatedCHO": "#sourceResource",
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true,
+        "object_status": 1,
+        "sourceResource": {
+          "title": "The Kittens"
+        }
+      },
+      "score": 12.425676,
+      "ingestType": "item",
+      "sourceResource": {
+        "date": {
+          "displayDate": "1883-1883",
+          "begin": "1883",
+          "end": "1883"
+        },
+        "subject": [
+          {
+            "name": "Hats"
+          },
+          {
+            "name": "Clothing & dress"
+          },
+          {
+            "name": "Dresses"
+          },
+          {
+            "name": "Hairstyles"
+          },
+          {
+            "name": "Interiors"
+          },
+          {
+            "name": "Cats"
+          }
+        ],
+        "type": "image",
+        "relation": "Costume--1880s--French",
+        "creator": [
+          "Illman Brothers"
+        ],
+        "title": "The Kittens",
+        "rights": "The New York Public Library is interested in learning more about items you've seen on our websites or elsewhere online. If you have any more information about an item or its copyright status, we want to hear from you. Please contact DigitalCollections@nypl.org with your contact information and a link to the relevant content.",
+        "stateLocatedIn": [
+          {
+            "name": "New York"
+          }
+        ],
+        "@id": "http://dp.la/api/items/73a769ca8b0c2c5da31fd8bdad7f8d92#sourceResource",
+        "extent": "1 print : col. ; 23 x 29 cm. (8 3/4 x 11 1/4 in.)",
+        "collection": {
+          "id": "b4ed60735859d08bb14d1606aa7d2d2a",
+          "@id": "http://dp.la/api/collections/b4ed60735859d08bb14d1606aa7d2d2a",
+          "title": "Costume--1880s--French"
+        }
+      },
+      "originalRecord": {
+        "location": [
+          {
+            "physicalLocation": [
+              {
+                "type": "repository",
+                "authority": "marcorg",
+                "#text": "nn"
+              },
+              {
+                "type": "division",
+                "#text": "Art and Picture Collection"
+              },
+              {
+                "type": "division_short_name",
+                "#text": "Art and Picture Collection"
+              },
+              {
+                "type": "code",
+                "#text": "MMPC"
+              }
+            ]
+          },
+          {
+            "shelfLocator": "PC COSTU-188-Fr"
+          },
+          {
+            "physicalLocation": [
+              {
+                "type": "division",
+                "#text": "Art and Picture Collection"
+              },
+              {
+                "type": "division_short_name",
+                "#text": "Art and Picture Collection"
+              },
+              {
+                "type": "code",
+                "#text": "MMPC"
+              }
+            ]
+          }
+        ],
+        "tmp_high_res_link": null,
+        "provider": {
+          "name": "The New York Public Library",
+          "@id": "http://dp.la/api/contributor/nypl"
+        },
+        "collection": {
+          "id": "b4ed60735859d08bb14d1606aa7d2d2a",
+          "@id": "http://dp.la/api/collections/b4ed60735859d08bb14d1606aa7d2d2a"
+        },
+        "version": "3.4",
+        "_id": "510d47e0-ea68-a3d9-e040-e00a18064a99",
+        "tmp_item_link": "http://digitalcollections.nypl.org/items/510d47e0-ea68-a3d9-e040-e00a18064a99",
+        "note": [
+          {
+            "type": "content",
+            "#text": "Title from folder."
+          },
+          {
+            "type": "content",
+            "#text": "Printed on border: \"Les modes parisiennes: Peterson's magazine, August, 1883.\" \"Engraved & printed by Illman Brothers.\" Injured folded lines on image."
+          },
+          {
+            "type": "source identifier",
+            "#text": "PET (Hades Legacy Identifier / Struc ID)"
+          }
+        ],
+        "typeOfResource": "still image",
+        "subject": [
+          {
+            "topic": {
+              "authority": "lcsh",
+              "valueURI": "http://id.loc.gov/authorities/subjects/sh85059282",
+              "#text": "Hats"
+            },
+            "temporal": "1880-1889"
+          },
+          {
+            "geographic": {
+              "authority": "naf",
+              "valueURI": "http://id.loc.gov/authorities/names/n79006404",
+              "#text": "France"
+            },
+            "topic": {
+              "authority": "tgm",
+              "valueURI": "http://id.loc.gov/vocabulary/graphicMaterials/tgm002198",
+              "#text": "Clothing & dress"
+            },
+            "temporal": "1880-1889"
+          },
+          {
+            "geographic": [
+              {
+                "authority": "naf",
+                "valueURI": "http://id.loc.gov/authorities/names/n79006404",
+                "#text": "France"
+              },
+              "Paris"
+            ],
+            "topic": [
+              {
+                "authority": "lcsh",
+                "valueURI": "http://id.loc.gov/authorities/childrensSubjects/sj96006385",
+                "#text": "Women"
+              },
+              {
+                "authority": "tgm",
+                "valueURI": "http://id.loc.gov/vocabulary/graphicMaterials/tgm002198",
+                "#text": "Clothing & dress"
+              }
+            ],
+            "temporal": "1880-1889"
+          },
+          {
+            "geographic": [
+              {
+                "authority": "naf",
+                "valueURI": "http://id.loc.gov/authorities/names/n79006404",
+                "#text": "France"
+              },
+              "Paris"
+            ],
+            "topic": {
+              "authority": "lcsh",
+              "valueURI": "http://id.loc.gov/authorities/subjects/sh97005993",
+              "#text": "Dresses"
+            },
+            "temporal": "1880-1889"
+          },
+          {
+            "geographic": [
+              {
+                "authority": "naf",
+                "valueURI": "http://id.loc.gov/authorities/names/n79006404",
+                "#text": "France"
+              },
+              "Paris"
+            ],
+            "topic": {
+              "authority": "lcsh",
+              "valueURI": "http://id.loc.gov/authorities/subjects/sh86006365",
+              "#text": "Hairstyles"
+            },
+            "temporal": "1880-1889"
+          },
+          {
+            "geographic": [
+              {
+                "authority": "naf",
+                "valueURI": "http://id.loc.gov/authorities/names/n79006404",
+                "#text": "France"
+              },
+              "Paris"
+            ],
+            "topic": {
+              "authority": "lcsh",
+              "valueURI": "http://id.loc.gov/authorities/subjects/sh2002006174",
+              "#text": "Interiors"
+            },
+            "temporal": "1880-1889"
+          },
+          {
+            "geographic": {
+              "authority": "naf",
+              "valueURI": "http://id.loc.gov/authorities/names/n79006404",
+              "#text": "France"
+            },
+            "topic": {
+              "authority": "lcsh",
+              "valueURI": "http://id.loc.gov/authorities/subjects/sh85021262",
+              "#text": "Cats"
+            },
+            "temporal": "1880-1889"
+          }
+        ],
+        "identifier": [
+          {
+            "displayLabel": "Hades Collection Guide ID (legacy)",
+            "#text": "482",
+            "type": "local_hades_collection"
+          },
+          {
+            "displayLabel": "Dynix",
+            "#text": "1637601",
+            "type": "local_other"
+          },
+          {
+            "displayLabel": "NYPL catalog ID (B-number)",
+            "#text": "b17566468",
+            "type": "local_bnumber"
+          },
+          {
+            "displayLabel": "Hades struc ID (legacy)",
+            "#text": "698510",
+            "type": "local_hades"
+          },
+          {
+            "displayLabel": "Barcode",
+            "#text": "33333159228986",
+            "type": "local_barcode"
+          },
+          {
+            "type": "uuid",
+            "#text": "d5421b60-c545-012f-b4a9-58d385a7bc34"
+          }
+        ],
+        "name": {
+          "type": "corporate",
+          "valueURI": "",
+          "usage": "primary",
+          "role": {
+            "roleTerm": [
+              {
+                "type": "code",
+                "authority": "marcrelator",
+                "valueURI": "http://id.loc.gov/vocabulary/relators/egr",
+                "#text": "egr"
+              },
+              {
+                "type": "text",
+                "authority": "marcrelator",
+                "valueURI": "http://id.loc.gov/vocabulary/relators/egr",
+                "#text": "Engraver"
+              }
+            ]
+          },
+          "authority": "naf",
+          "namePart": "Illman Brothers"
+        },
+        "tmp_rights_statement": "The New York Public Library is interested in learning more about items you've seen on our websites or elsewhere online. If you have any more information about an item or its copyright status, we want to hear from you. Please contact DigitalCollections@nypl.org with your contact information and a link to the relevant content.",
+        "titleInfo": {
+          "supplied": "no",
+          "usage": "primary",
+          "title": "The Kittens."
+        },
+        "originInfo": {
+          "dateIssued": {
+            "#text": "1883",
+            "keyDate": "yes",
+            "encoding": "w3cdtf"
+          }
+        },
+        "tmp_image_id": "815559",
+        "physicalDescription": {
+          "extent": "1 print : col. ; 23 x 29 cm. (8 3/4 x 11 1/4 in.)"
+        },
+        "relatedItem": {
+          "type": "host",
+          "relatedItem": {
+            "type": "host",
+            "identifier": [
+              {
+                "type": "uuid",
+                "#text": "79d4a650-c52e-012f-67ad-58d385a7bc34"
+              },
+              {
+                "type": "local_hades",
+                "#text": "569241 local_hades_collection"
+              }
+            ],
+            "titleInfo": {
+              "title": "Mid-Manhattan Picture Collection"
+            }
+          },
+          "identifier": [
+            {
+              "type": "uuid",
+              "#text": "c81d2180-c545-012f-cb5b-58d385a7bc34"
+            },
+            {
+              "type": "local_hades",
+              "#text": "698440 local_other"
+            }
+          ],
+          "titleInfo": {
+            "title": "Costume -- 1880s -- French"
+          }
+        },
+        "schemaLocation": "http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd"
+      },
+      "ingestionSequence": 18,
+      "@context": "http://dp.la/api/items/context"
+    },
+    {
+      "id": "0f9ac9e16c3d6bd0a5b7353195e878a1",
+      "provider": {
+        "name": "Minnesota Digital Library",
+        "@id": "http://dp.la/api/contributor/mdl"
+      },
+      "object": "http://api.artsmia.org/images/97286/medium.jpg",
+      "@id": "http://dp.la/api/items/0f9ac9e16c3d6bd0a5b7353195e878a1",
+      "ingestDate": "2016-11-02T12:36:42.063726Z",
+      "_id": "minnesota--https://collections.artsmia.org/index.php?page=detail&id=97286",
+      "dataProvider": "Minneapolis Institute of Arts",
+      "@type": "ore:Aggregation",
+      "isShownAt": "https://collections.artsmia.org/index.php?page=detail&id=97286",
+      "_rev": "3-c52be77e2406e222e697f39e5de63dd1",
+      "aggregatedCHO": "#sourceResource",
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true,
+        "sourceResource": {
+          "title": "Kittens"
+        }
+      },
+      "score": 12.354016,
+      "ingestType": "item",
+      "sourceResource": {
+        "creator": "Artist: Mabel Dwight; Printer: George C. Miller",
+        "date": [
+          {
+            "displayDate": "1931"
+          }
+        ],
+        "format": "Lithograph",
+        "description": "black and white mother cat, seated, with five kittens in various poses (two tiger, one white, two white with black spots) on a small rug",
+        "title": "Kittens",
+        "rights": "http://new.artsmia.org/visit/policies-guidelines/#image_access_and_use",
+        "@id": "http://dp.la/api/items/0f9ac9e16c3d6bd0a5b7353195e878a1#sourceResource",
+        "spatial": [
+          {
+            "name": "United States",
+            "state": "",
+            "coordinates": "39.76, -98.5",
+            "country": "United States",
+            "county": ""
+          }
+        ],
+        "extent": "9 11/16 x 12 1/2 in. (24.61 x 31.75 cm) (image)\r\n15 15/16 x 18 1/4 in. (40.48 x 46.36 cm) (sheet)"
+      },
+      "originalRecord": {
+        "published": true,
+        "import_job_id": 37,
+        "provider": {
+          "name": "Minnesota Digital Library",
+          "@id": "http://dp.la/api/contributor/mdl"
+        },
+        "import_job_name": "MIA",
+        "tags": [
+          "dpla"
+        ],
+        "record": {
+          "HIDE_FIELD_IMAGE_RESTRICTED": "0",
+          "isShownAt": "https://collections.artsmia.org/index.php?page=detail&id=97286",
+          "provider": "Minnesota Digital Library",
+          "object": "http://api.artsmia.org/images/97286/medium.jpg",
+          "record_hash": "a91f30b30462b4b550373923d2c0a5c82e9b4f20",
+          "originalRecord": {
+            "id": "http://api.artsmia.org/objects/97286",
+            "classification": " Prints",
+            "artist": "Artist: Mabel Dwight; Printer: George C. Miller",
+            "object_name": "Print",
+            "description": "black and white mother cat, seated, with five kittens in various poses (two tiger, one white, two white with black spots) on a small rug",
+            "inscription": "Signature and Date",
+            "accession_number": "2005.103.1",
+            "image_copyright": "Copyright of the artist%2C artist%27s estate%2C or assignees",
+            "culture": null,
+            "image_width": 4878,
+            "nationality": null,
+            "portfolio": "From ",
+            "creditline": "Gift of funds in memory of Walt Augustinack by his family and friends",
+            "style": "20th century",
+            "country": "United States",
+            "image": "valid",
+            "room": "Not on View",
+            "restricted": 0,
+            "provenance": "[Paramour Fine Arts]",
+            "markings": "",
+            "department": "Prints and Drawings",
+            "medium": "Lithograph",
+            "role": "Artist",
+            "signed": "Signed and dated in pencil, LRC: [Mabel Dwight - 1931]",
+            "catalogue_raissonne": "Robinson 53",
+            "see_also": [
+              ""
+            ],
+            "curator_approved": 0,
+            "life_date": "American, 1894-1965",
+            "image_height": 3882,
+            "continent": null,
+            "title": "Kittens",
+            "dimension": "9 11/16 x 12 1/2 in. (24.61 x 31.75 cm) (image)\r\n15 15/16 x 18 1/4 in. (40.48 x 46.36 cm) (sheet)",
+            "dated": "1931",
+            "text": "",
+            "rights_type": "Orphaned Work"
+          },
+          "HIDE_FIELD_IMAGE_INVALID": "valid",
+          "sourceResource": {
+            "creator": "Artist: Mabel Dwight; Printer: George C. Miller",
+            "date": {
+              "displayDate": "1931"
+            },
+            "identifier": "2005.103.1",
+            "format": "Lithograph",
+            "description": "black and white mother cat, seated, with five kittens in various poses (two tiger, one white, two white with black spots) on a small rug",
+            "title": "Kittens",
+            "rights": "http://new.artsmia.org/visit/policies-guidelines/#image_access_and_use",
+            "spatial": [
+              {
+                "name": "United States",
+                "state": "",
+                "coordinates": "39.76, -98.5",
+                "country": "United States",
+                "county": ""
+              }
+            ],
+            "extent": "9 11/16 x 12 1/2 in. (24.61 x 31.75 cm) (image)\r\n15 15/16 x 18 1/4 in. (40.48 x 46.36 cm) (sheet)"
+          },
+          "dataProvider": "Minneapolis Institute of Arts",
+          "@context": "http://dp.la/api/items/context"
+        },
+        "_id": "a91f30b30462b4b550373923d2c0a5c82e9b4f20",
+        "record_id": "a91f30b30462b4b550373923d2c0a5c82e9b4f20",
+        "ingested_at": "2016-10-26T15:50:09Z"
+      },
+      "ingestionSequence": 25,
+      "@context": "http://dp.la/api/items/context"
+    },
+    {
+      "id": "36516d02bf0929e8e950e01d3f54e6e9",
+      "provider": {
+        "name": "Minnesota Digital Library",
+        "@id": "http://dp.la/api/contributor/mdl"
+      },
+      "object": "http://collections.mnhs.org/cms/web5/media.php?thumb=yes&irn=10120853",
+      "@id": "http://dp.la/api/items/36516d02bf0929e8e950e01d3f54e6e9",
+      "ingestDate": "2016-11-02T13:22:58.780846Z",
+      "_id": "minnesota--http://collections.mnhs.org/cms/display.php?irn=10747490",
+      "dataProvider": "Minnesota Historical Society",
+      "@type": "ore:Aggregation",
+      "isShownAt": "http://collections.mnhs.org/cms/display.php?irn=10747490",
+      "_rev": "12-0c826378f90f70ca570a08344f09c083",
+      "aggregatedCHO": "#sourceResource",
+      "admin": {
+        "validation_message": "{u'iso3166-2': u'US-MN'} is not of type 'array'",
+        "valid_after_enrich": false,
+        "sourceResource": {
+          "title": "Kittens"
+        }
+      },
+      "score": 12.354016,
+      "ingestType": "item",
+      "sourceResource": {
+        "creator": "Soule, John P",
+        "subject": [
+          {
+            "name": "Animals. Pets. Cats."
+          }
+        ],
+        "type": "image",
+        "description": "Photographer located in Boston.",
+        "format": "Photographs",
+        "title": "Kittens",
+        "rights": "http://www.mnhs.org/copyright",
+        "stateLocatedIn": {
+          "iso3166-2": "US-MN"
+        },
+        "@id": "http://dp.la/api/items/36516d02bf0929e8e950e01d3f54e6e9#sourceResource",
+        "date": [
+          {
+            "displayDate": "circa 1873"
+          }
+        ],
+        "collection": {
+          "id": "b97327edc09d4a8daf286afc58bdc4cf",
+          "@id": "http://dp.la/api/collections/b97327edc09d4a8daf286afc58bdc4cf",
+          "title": "Collections Online"
+        }
+      },
+      "originalRecord": {
+        "published": true,
+        "import_job_id": 4,
+        "provider": {
+          "name": "Minnesota Digital Library",
+          "@id": "http://dp.la/api/contributor/mdl"
+        },
+        "collection": {
+          "id": "b97327edc09d4a8daf286afc58bdc4cf",
+          "@id": "http://dp.la/api/collections/b97327edc09d4a8daf286afc58bdc4cf",
+          "title": "Collections Online"
+        },
+        "import_job_name": "MHS",
+        "tags": [
+          "dpla"
+        ],
+        "record": {
+          "isShownAt": "http://collections.mnhs.org/cms/display.php?irn=10747490",
+          "identifier": "http://collections.mnhs.org/cms/web5/media.php?thumb=yes&irn=10120853",
+          "provider": "Minnesota Digital Library",
+          "object": "http://collections.mnhs.org/cms/web5/media.php?thumb=yes&irn=10120853",
+          "record_hash": "f7e7ee04b142193d2c54ad73edc888a44b6d7d5e",
+          "title": "Kittens.",
+          "originalRecord": {
+            "family_name_displays": {
+              "family_name_display": "Soule"
+            },
+            "subject_texts": {
+              "subject_text": "Animals. Pets. Cats."
+            },
+            "titles": {
+              "title": "Kittens."
+            },
+            "given_name_displays": {
+              "given_name_display": "John P."
+            },
+            "link": "http://collections.mnhs.org/cms/display.php?irn=10747490",
+            "name_facets": {
+              "name_facet": "Soule, John P."
+            },
+            "given_name_facets": {
+              "given_name_facet": "John"
+            },
+            "type_texts": {
+              "type_text": "Photographs"
+            },
+            "name_texts": {
+              "name_text": "soule, john p."
+            },
+            "given_name_texts": {
+              "given_name_text": "john p."
+            },
+            "subject_facets": {
+              "subject_facet": [
+                "Animals",
+                "Pets",
+                "Cats"
+              ]
+            },
+            "type_displays": {
+              "type_display": "Photographs"
+            },
+            "type_facets": {
+              "type_facet": "Photographs"
+            },
+            "family_name_texts": {
+              "family_name_text": "soule"
+            },
+            "image_link": "http://collections.mnhs.org/cms/web5/media.php?thumb=yes&irn=10120853",
+            "family_name_facets": {
+              "family_name_facet": "Soule"
+            },
+            "fulltexts": {
+              "fulltext": [
+                "Photographer located in Boston.",
+                "stereograph",
+                "photographs"
+              ]
+            },
+            "name_displays": {
+              "name_display": "Soule, John P."
+            },
+            "event_display_dates": {
+              "event_display_date": [
+                "Created: circa 1873",
+                "Content: circa 1873"
+              ]
+            },
+            "event_dates": {
+              "event_date": [
+                "1873-01-01T00:00:00Z",
+                "1873-12-31T23:59:59Z"
+              ]
+            },
+            "collection_name": "Collections Online",
+            "subject_displays": {
+              "subject_display": "Animals. Pets. Cats."
+            },
+            "event_date_label": "Dates"
+          },
+          "sourceResource": {
+            "creator": "Soule, John P.",
+            "subject": [
+              {
+                "name": "Animals. Pets. Cats."
+              }
+            ],
+            "type": "image",
+            "description": "Photographer located in Boston.",
+            "format": "Photographs",
+            "title": "Kittens.",
+            "rights": "http://www.mnhs.org/copyright",
+            "stateLocatedIn": {
+              "iso3166-2": "US-MN"
+            },
+            "date": {
+              "displayDate": "circa 1873"
+            },
+            "collection": {
+              "title": "Collections Online"
+            }
+          },
+          "dataProvider": "Minnesota Historical Society",
+          "@context": "http://dp.la/api/items/context"
+        },
+        "_id": "f7e7ee04b142193d2c54ad73edc888a44b6d7d5e",
+        "record_id": "f7e7ee04b142193d2c54ad73edc888a44b6d7d5e",
+        "ingested_at": "2016-06-29T18:42:59Z"
+      },
+      "ingestionSequence": 25,
+      "@context": "http://dp.la/api/items/context"
+    },
+    {
+      "id": "4a4fc4fa62a98ee2bbf3f66a252b87be",
+      "provider": {
+        "name": "The New York Public Library",
+        "@id": "http://dp.la/api/contributor/nypl"
+      },
+      "object": "http://images.nypl.org/index.php?id=1643477&t=t",
+      "@id": "http://dp.la/api/items/4a4fc4fa62a98ee2bbf3f66a252b87be",
+      "ingestDate": "2016-08-10T03:46:16.004018Z",
+      "_id": "nypl--510d47e4-7286-a3d9-e040-e00a18064a99",
+      "dataProvider": "George Arents Collection. The New York Public Library",
+      "@type": "ore:Aggregation",
+      "isShownAt": "http://digitalcollections.nypl.org/items/510d47e4-7286-a3d9-e040-e00a18064a99",
+      "_rev": "6-6b73d9069ad2270604a51b5c286ca62b",
+      "aggregatedCHO": "#sourceResource",
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true,
+        "object_status": 1,
+        "sourceResource": {
+          "title": "Studies of kittens"
+        }
+      },
+      "score": 7.8507166,
+      "ingestType": "item",
+      "sourceResource": {
+        "subject": [
+          {
+            "name": "Cigarette cards"
+          },
+          {
+            "name": "Trade cards"
+          }
+        ],
+        "type": "image",
+        "relation": "How to sketch",
+        "title": "Studies of kittens",
+        "spatial": [
+          {
+            "name": "U.K.",
+            "country": "United Kingdom",
+            "coordinates": "54.5608863831, -2.21251177788"
+          }
+        ],
+        "stateLocatedIn": [
+          {
+            "name": "New York"
+          }
+        ],
+        "@id": "http://dp.la/api/items/4a4fc4fa62a98ee2bbf3f66a252b87be#sourceResource",
+        "rights": "The New York Public Library is interested in learning more about items you've seen on our websites or elsewhere online. If you have any more information about an item or its copyright status, we want to hear from you. Please contact DigitalCollections@nypl.org with your contact information and a link to the relevant content.",
+        "collection": {
+          "id": "4b2c78d8d91b78c5060cdef2b27ff198",
+          "@id": "http://dp.la/api/collections/4b2c78d8d91b78c5060cdef2b27ff198",
+          "title": "How to sketch"
+        }
+      },
+      "originalRecord": {
+        "location": [
+          {
+            "physicalLocation": [
+              {
+                "type": "repository",
+                "authority": "marcorg",
+                "#text": "nn"
+              },
+              {
+                "type": "division",
+                "#text": "George Arents Collection"
+              },
+              {
+                "type": "division_short_name",
+                "#text": "George Arents Collection"
+              },
+              {
+                "type": "code",
+                "#text": "ARN"
+              }
+            ],
+            "shelfLocator": "Arents Cigarette Cards"
+          },
+          {
+            "shelfLocator": "Arents Cigarette Cards 1120"
+          },
+          {
+            "physicalLocation": [
+              {
+                "type": "division",
+                "#text": "George Arents Collection"
+              },
+              {
+                "type": "division_short_name",
+                "#text": "George Arents Collection"
+              },
+              {
+                "type": "code",
+                "#text": "ARN"
+              }
+            ]
+          }
+        ],
+        "tmp_high_res_link": null,
+        "provider": {
+          "name": "The New York Public Library",
+          "@id": "http://dp.la/api/contributor/nypl"
+        },
+        "collection": {
+          "id": "4b2c78d8d91b78c5060cdef2b27ff198",
+          "@id": "http://dp.la/api/collections/4b2c78d8d91b78c5060cdef2b27ff198"
+        },
+        "version": "3.4",
+        "_id": "510d47e4-7286-a3d9-e040-e00a18064a99",
+        "tmp_item_link": "http://digitalcollections.nypl.org/items/510d47e4-7286-a3d9-e040-e00a18064a99",
+        "note": [
+          {
+            "type": "content",
+            "#text": "Morris; Morris Cigarettes"
+          },
+          {
+            "type": "citation/reference",
+            "#text": "Cartophilic reference books M142-33"
+          }
+        ],
+        "typeOfResource": "still image",
+        "genre": [
+          {
+            "authority": "lctgm",
+            "valueURI": "http://id.loc.gov/vocabulary/graphicMaterials/tgm002061",
+            "#text": "Cigarette cards",
+            "usage": "primary"
+          },
+          {
+            "authority": "lctgm",
+            "valueURI": "http://id.loc.gov/vocabulary/graphicMaterials/tgm010957",
+            "#text": "Trade cards"
+          }
+        ],
+        "originInfo": {
+          "place": {
+            "placeTerm": "U.K."
+          }
+        },
+        "identifier": [
+          {
+            "displayLabel": "CATNYP ID (legacy)",
+            "#text": "b6932483",
+            "type": "local_catnyp"
+          },
+          {
+            "displayLabel": "NYPL catalog ID (B-number)",
+            "#text": "b15262620",
+            "type": "local_bnumber"
+          },
+          {
+            "displayLabel": "Hades Collection Guide ID (legacy)",
+            "#text": "161",
+            "type": "local_hades_collection"
+          },
+          {
+            "displayLabel": "Hades struc ID (legacy)",
+            "#text": "789248",
+            "type": "local_hades"
+          },
+          {
+            "type": "uuid",
+            "#text": "87f28df0-c56d-012f-faca-58d385a7bc34"
+          }
+        ],
+        "tmp_rights_statement": "The New York Public Library is interested in learning more about items you've seen on our websites or elsewhere online. If you have any more information about an item or its copyright status, we want to hear from you. Please contact DigitalCollections@nypl.org with your contact information and a link to the relevant content.",
+        "titleInfo": {
+          "lang": "eng",
+          "supplied": "no",
+          "usage": "primary",
+          "title": "Studies of kittens."
+        },
+        "schemaLocation": "http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd",
+        "tmp_image_id": "1643477",
+        "relatedItem": {
+          "type": "host",
+          "relatedItem": {
+            "type": "host",
+            "identifier": [
+              {
+                "type": "uuid",
+                "#text": "b50ab6f0-c52b-012f-5986-58d385a7bc34"
+              },
+              {
+                "type": "local_hades",
+                "#text": "108805 local_catnyp"
+              }
+            ],
+            "titleInfo": {
+              "title": "Cigarette cards"
+            }
+          },
+          "identifier": [
+            {
+              "type": "uuid",
+              "#text": "7eac2fa0-c56d-012f-8cbb-58d385a7bc34"
+            },
+            {
+              "type": "local_hades",
+              "#text": "779728"
+            }
+          ],
+          "titleInfo": {
+            "title": "How to sketch"
+          }
+        }
+      },
+      "ingestionSequence": 18,
+      "@context": "http://dp.la/api/items/context"
+    },
+    {
+      "id": "8632b8c45df85d31d0c07eb8f2c72ca9",
+      "provider": {
+        "name": "Mountain West Digital Library",
+        "@id": "http://dp.la/api/contributor/mwdl"
+      },
+      "object": [
+        "http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/19812",
+        "http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/19812"
+      ],
+      "@id": "http://dp.la/api/items/8632b8c45df85d31d0c07eb8f2c72ca9",
+      "ingestDate": "2016-10-14T06:17:16.761608Z",
+      "_id": "mwdl--digcoll_uuu_11USHS_Trib/19812",
+      "dataProvider": "Utah State Historical Society",
+      "@type": "ore:Aggregation",
+      "isShownAt": "http://utah-primoprod.hosted.exlibrisgroup.com/primo_library/libweb/action/dlDisplay.do?vid=MWDL&afterPDS=true&docId=digcoll_uuu_11USHS_Trib/19812",
+      "_rev": "4-0bfcf19c05b88b4cb0a06b577926dd94",
+      "aggregatedCHO": "#sourceResource",
+      "admin": {
+        "validation_message": "[u'http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/19812', u'http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/19812'] is not of type 'string'",
+        "valid_after_enrich": false,
+        "sourceResource": {
+          "title": "Cats--Kittens"
+        }
+      },
+      "score": 7.8507166,
+      "ingestType": "item",
+      "sourceResource": {
+        "isPartOf": "Salt Lake Tribune Negative Collection",
+        "stateLocatedIn": [
+          {
+            "name": "UT"
+          }
+        ],
+        "type": "image",
+        "collection": {
+          "id": "ccd556d04167106cef2c5a5036eb1036",
+          "@id": "http://dp.la/api/collections/ccd556d04167106cef2c5a5036eb1036",
+          "title": "Salt Lake Tribune Negative Collection"
+        },
+        "description": [
+          "MSS C 400 Salt Lake Tribune Negative Collection",
+          "356d"
+        ],
+        "title": "Cats--Kittens",
+        "identifier": "http://content.lib.utah.edu/u?/USHS_Trib,19812",
+        "rights": "Online access. Reproduction and use by permission from Utah State History.",
+        "@id": "http://dp.la/api/items/8632b8c45df85d31d0c07eb8f2c72ca9#sourceResource",
+        "date": {
+          "displayDate": "1947-12-08",
+          "begin": "1947-12-08",
+          "end": "1947-12-08"
+        },
+        "language": [
+          {
+            "name": "English",
+            "iso639_3": "eng"
+          }
+        ]
+      },
+      "originalRecord": {
+        "NO": "466371",
+        "SEARCH_ENGINE_TYPE": "Local Search Engine",
+        "provider": {
+          "name": "Mountain West Digital Library",
+          "@id": "http://dp.la/api/contributor/mwdl"
+        },
+        "sear:GETIT": {
+          "GetIt2": "http://sfx7.exlibrisgroup.com/uutah?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2016-10-13T15%3A29%3A54IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo3-Journal-digcoll_uuu_11&rft_val_fmt=info:ofi/fmt:kev:mtx:&rft.genre=&rft.atitle=&rft.jtitle=&rft.btitle=&rft.aulast=&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=&rft.aucorp=&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=&rft.epage=&rft.pages=&rft.artnum=&rft.issn=&rft.eissn=&rft.isbn=&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&rft.eisbn=&rft_dat=USHS_Trib/19812316611396&rft_id=info:oai/&req.language=",
+          "deliveryCategory": "Online Resource",
+          "GetIt1": "http://content.lib.utah.edu/u?/USHS_Trib,19812"
+        },
+        "sear:LINKS": {
+          "sear:linktorsrc": "http://content.lib.utah.edu/u?/USHS_Trib,19812",
+          "sear:thumbnail": [
+            "http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/19812",
+            "http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/19812"
+          ]
+        },
+        "ID": "2872246",
+        "SEARCH_ENGINE": "Local Search Engine",
+        "_id": "digcoll_uuu_11USHS_Trib/19812",
+        "RANK": "0.7996895",
+        "PrimoNMBib": {
+          "xmlns": "http://www.exlibrisgroup.com/xsd/primo/primo_nm_bib",
+          "record": {
+            "links": {
+              "thumbnail": "$$Tdigcoll_uuu_11_linktothumb$$DSee Thumbnail",
+              "linktorsrc": "$$Tdigcoll_uuu_11_linktores$$DOpen resource in a new window"
+            },
+            "delivery": {
+              "institution": "MWDL",
+              "delcategory": "Online Resource"
+            },
+            "facets": {
+              "creationdate": "1947-12-08",
+              "rsrctype": "images",
+              "collection": "Digital Collections",
+              "format": "image/jp2",
+              "lfc03": "University of Utah, J. Willard Marriott Library",
+              "lfc04": "University of Utah J. Willard Marriott Library CONTENTdm OAI Server Repository",
+              "prefilter": "images",
+              "genre": "unknown",
+              "toplevel": "online_resources",
+              "lfc02": "Utah State Historical Society",
+              "language": "eng",
+              "frbrtype": "6",
+              "frbrgroupid": "316611396",
+              "lfc01": "Salt Lake Tribune Negative Collection"
+            },
+            "ranking": {
+              "booster1": "1",
+              "booster2": "1"
+            },
+            "addata": {
+              "date": "1947",
+              "pub": "Published by Utah State History; digitized by Backstage Library Works; hosted by J. Willard Marriott Library, University of Utah"
+            },
+            "sort": {
+              "creationdate": "1947",
+              "title": "Cats--Kittens"
+            },
+            "control": {
+              "sourcerecordid": "USHS_Trib/19812",
+              "sourcesystem": "Other",
+              "originalsourceid": "19812",
+              "addsrcrecordid": "uuu-11-119-2229",
+              "sourcedbandrecordid": "USHS_Trib",
+              "recordid": "digcoll_uuu_11USHS_Trib/19812",
+              "sourceformat": "Digital Entity",
+              "sourceid": "digcoll_uuu_11"
+            },
+            "search": {
+              "creationdate": "1947-12-08",
+              "lsr02": "11",
+              "sourceid": "digcoll_uuu_11",
+              "description": [
+                "MSS C 400 Salt Lake Tribune Negative Collection",
+                "356d"
+              ],
+              "lsr10": "University of Utah J. Willard Marriott Library CONTENTdm OAI Server Repository",
+              "lsr12": "Utah State Historical Society",
+              "lsr09": "University of Utah, J. Willard Marriott Library",
+              "recordid": "digcoll_uuu_11USHS_Trib/19812",
+              "lsr03": "119",
+              "scope": [
+                "uu",
+                "mw"
+              ],
+              "lsr01": "uuu",
+              "title": "Cats--Kittens",
+              "addsrcrecordid": "uuu-11-119-2229",
+              "rsrctype": "images",
+              "lsr13": "Salt Lake Tribune Negative Collection",
+              "lsr04": "2229"
+            },
+            "display": {
+              "creationdate": "1947-12-08",
+              "lds02": "University of Utah J. Willard Marriott Library CONTENTdm OAI Server Repository",
+              "identifier": [
+                "39222003538605_02",
+                "http://content.lib.utah.edu/cdm/ref/collection/USHS_Trib/id/19812"
+              ],
+              "format": "image/jp2",
+              "description": [
+                "MSS C 400 Salt Lake Tribune Negative Collection",
+                "356d"
+              ],
+              "lds03": "Utah State Historical Society",
+              "rights": "Online access. Reproduction and use by permission from Utah State History.",
+              "lds17": "image",
+              "lds18": "Image;StillImage",
+              "type": "Image",
+              "lds04": "Salt Lake Tribune Negative Collection",
+              "title": "Cats--Kittens",
+              "lds01": "University of Utah, J. Willard Marriott Library",
+              "publisher": "Published by Utah State History; digitized by Backstage Library Works; hosted by J. Willard Marriott Library, University of Utah",
+              "language": "eng"
+            }
+          }
+        },
+        "collection": {
+          "id": "ccd556d04167106cef2c5a5036eb1036",
+          "@id": "http://dp.la/api/collections/ccd556d04167106cef2c5a5036eb1036",
+          "title": "Salt Lake Tribune Negative Collection"
+        }
+      },
+      "ingestionSequence": 25,
+      "@context": "http://dp.la/api/items/context"
+    },
+    {
+      "id": "91b799cbdd495b073ece6f17a4dc7e47",
+      "provider": {
+        "name": "Mountain West Digital Library",
+        "@id": "http://dp.la/api/contributor/mwdl"
+      },
+      "object": [
+        "http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/18434",
+        "http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/18434"
+      ],
+      "@id": "http://dp.la/api/items/91b799cbdd495b073ece6f17a4dc7e47",
+      "ingestDate": "2016-10-14T02:53:04.525280Z",
+      "_id": "mwdl--digcoll_uuu_11USHS_Trib/18434",
+      "dataProvider": "Utah State Historical Society",
+      "@type": "ore:Aggregation",
+      "isShownAt": "http://utah-primoprod.hosted.exlibrisgroup.com/primo_library/libweb/action/dlDisplay.do?vid=MWDL&afterPDS=true&docId=digcoll_uuu_11USHS_Trib/18434",
+      "_rev": "4-83106f8763ffca83d67dc28d4546fe83",
+      "aggregatedCHO": "#sourceResource",
+      "admin": {
+        "validation_message": "[u'http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/18434', u'http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/18434'] is not of type 'string'",
+        "valid_after_enrich": false,
+        "sourceResource": {
+          "title": "Cats--Kittens"
+        }
+      },
+      "score": 7.8507166,
+      "ingestType": "item",
+      "sourceResource": {
+        "isPartOf": "Salt Lake Tribune Negative Collection",
+        "stateLocatedIn": [
+          {
+            "name": "UT"
+          }
+        ],
+        "type": "image",
+        "collection": {
+          "id": "ccd556d04167106cef2c5a5036eb1036",
+          "@id": "http://dp.la/api/collections/ccd556d04167106cef2c5a5036eb1036",
+          "title": "Salt Lake Tribune Negative Collection"
+        },
+        "description": [
+          "MSS C 400 Salt Lake Tribune Negative Collection",
+          "356c"
+        ],
+        "title": "Cats--Kittens",
+        "identifier": "http://content.lib.utah.edu/u?/USHS_Trib,18434",
+        "rights": "Online access. Reproduction and use by permission from Utah State History.",
+        "@id": "http://dp.la/api/items/91b799cbdd495b073ece6f17a4dc7e47#sourceResource",
+        "date": {
+          "displayDate": "1947-12-08",
+          "begin": "1947-12-08",
+          "end": "1947-12-08"
+        },
+        "language": [
+          {
+            "name": "English",
+            "iso639_3": "eng"
+          }
+        ]
+      },
+      "originalRecord": {
+        "NO": "713026",
+        "SEARCH_ENGINE_TYPE": "Local Search Engine",
+        "provider": {
+          "name": "Mountain West Digital Library",
+          "@id": "http://dp.la/api/contributor/mwdl"
+        },
+        "sear:GETIT": {
+          "GetIt2": "http://sfx7.exlibrisgroup.com/uutah?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2016-10-13T16%3A52%3A50IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo3-Journal-digcoll_uuu_11&rft_val_fmt=info:ofi/fmt:kev:mtx:&rft.genre=&rft.atitle=&rft.jtitle=&rft.btitle=&rft.aulast=&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=&rft.aucorp=&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=&rft.epage=&rft.pages=&rft.artnum=&rft.issn=&rft.eissn=&rft.isbn=&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&rft.eisbn=&rft_dat=USHS_Trib/18434316651493&rft_id=info:oai/&req.language=",
+          "deliveryCategory": "Online Resource",
+          "GetIt1": "http://content.lib.utah.edu/u?/USHS_Trib,18434"
+        },
+        "sear:LINKS": {
+          "sear:linktorsrc": "http://content.lib.utah.edu/u?/USHS_Trib,18434",
+          "sear:thumbnail": [
+            "http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/18434",
+            "http://content.lib.utah.edu/utils/getthumbnail/collection/USHS_Trib/id/18434"
+          ]
+        },
+        "ID": "4348050",
+        "SEARCH_ENGINE": "Local Search Engine",
+        "_id": "digcoll_uuu_11USHS_Trib/18434",
+        "RANK": "0.7996116",
+        "PrimoNMBib": {
+          "xmlns": "http://www.exlibrisgroup.com/xsd/primo/primo_nm_bib",
+          "record": {
+            "links": {
+              "thumbnail": "$$Tdigcoll_uuu_11_linktothumb$$DSee Thumbnail",
+              "linktorsrc": "$$Tdigcoll_uuu_11_linktores$$DOpen resource in a new window"
+            },
+            "delivery": {
+              "institution": "MWDL",
+              "delcategory": "Online Resource"
+            },
+            "facets": {
+              "creationdate": "1947-12-08",
+              "rsrctype": "images",
+              "collection": "Digital Collections",
+              "format": "image/jp2",
+              "lfc03": "University of Utah, J. Willard Marriott Library",
+              "lfc04": "University of Utah J. Willard Marriott Library CONTENTdm OAI Server Repository",
+              "prefilter": "images",
+              "genre": "unknown",
+              "toplevel": "online_resources",
+              "lfc02": "Utah State Historical Society",
+              "language": "eng",
+              "frbrtype": "6",
+              "frbrgroupid": "316651493",
+              "lfc01": "Salt Lake Tribune Negative Collection"
+            },
+            "ranking": {
+              "booster1": "1",
+              "booster2": "1"
+            },
+            "addata": {
+              "date": "1947",
+              "pub": "Published by Utah State History; digitized by Backstage Library Works; hosted by J. Willard Marriott Library, University of Utah"
+            },
+            "sort": {
+              "creationdate": "1947",
+              "title": "Cats--Kittens"
+            },
+            "control": {
+              "sourcerecordid": "USHS_Trib/18434",
+              "sourcesystem": "Other",
+              "originalsourceid": "18434",
+              "addsrcrecordid": "uuu-11-119-2229",
+              "sourcedbandrecordid": "USHS_Trib",
+              "recordid": "digcoll_uuu_11USHS_Trib/18434",
+              "sourceformat": "Digital Entity",
+              "sourceid": "digcoll_uuu_11"
+            },
+            "search": {
+              "creationdate": "1947-12-08",
+              "lsr02": "11",
+              "sourceid": "digcoll_uuu_11",
+              "description": [
+                "MSS C 400 Salt Lake Tribune Negative Collection",
+                "356c"
+              ],
+              "lsr10": "University of Utah J. Willard Marriott Library CONTENTdm OAI Server Repository",
+              "lsr12": "Utah State Historical Society",
+              "lsr09": "University of Utah, J. Willard Marriott Library",
+              "recordid": "digcoll_uuu_11USHS_Trib/18434",
+              "lsr03": "119",
+              "scope": [
+                "uu",
+                "mw"
+              ],
+              "lsr01": "uuu",
+              "title": "Cats--Kittens",
+              "addsrcrecordid": "uuu-11-119-2229",
+              "rsrctype": "images",
+              "lsr13": "Salt Lake Tribune Negative Collection",
+              "lsr04": "2229"
+            },
+            "display": {
+              "creationdate": "1947-12-08",
+              "lds02": "University of Utah J. Willard Marriott Library CONTENTdm OAI Server Repository",
+              "identifier": [
+                "39222003538605_01",
+                "http://content.lib.utah.edu/cdm/ref/collection/USHS_Trib/id/18434"
+              ],
+              "format": "image/jp2",
+              "description": [
+                "MSS C 400 Salt Lake Tribune Negative Collection",
+                "356c"
+              ],
+              "lds03": "Utah State Historical Society",
+              "rights": "Online access. Reproduction and use by permission from Utah State History.",
+              "lds17": "image",
+              "lds18": "Image;StillImage",
+              "type": "Image",
+              "lds04": "Salt Lake Tribune Negative Collection",
+              "title": "Cats--Kittens",
+              "lds01": "University of Utah, J. Willard Marriott Library",
+              "publisher": "Published by Utah State History; digitized by Backstage Library Works; hosted by J. Willard Marriott Library, University of Utah",
+              "language": "eng"
+            }
+          }
+        },
+        "collection": {
+          "id": "ccd556d04167106cef2c5a5036eb1036",
+          "@id": "http://dp.la/api/collections/ccd556d04167106cef2c5a5036eb1036",
+          "title": "Salt Lake Tribune Negative Collection"
+        }
+      },
+      "ingestionSequence": 25,
+      "@context": "http://dp.la/api/items/context"
+    },
+    {
+      "id": "fbb7d3c8687ad9e5ea8faef6412a4a4d",
+      "provider": {
+        "name": "North Carolina Digital Heritage Center",
+        "@id": "http://dp.la/api/contributor/digitalnc"
+      },
+      "object": "http://dc.lib.unc.edu/utils/getthumbnail/collection/morton_highlights/id/4156",
+      "@id": "http://dp.la/api/items/fbb7d3c8687ad9e5ea8faef6412a4a4d",
+      "ingestDate": "2016-12-10T03:00:08.257740Z",
+      "_id": "digitalnc--urn:brevard.lib.unc.eduunc_morton_highlights:oai:dc.lib.unc.edu:morton_highlights/4156",
+      "dataProvider": "University of North Carolina at Chapel Hill",
+      "@type": "ore:Aggregation",
+      "isShownAt": "http://dc.lib.unc.edu/u?/morton_highlights,4156",
+      "_rev": "8-1c3b3f557db06f70abbb87b99d9051c7",
+      "aggregatedCHO": "#sourceResource",
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true,
+        "sourceResource": {
+          "title": "Cougar and kittens"
+        }
+      },
+      "score": 7.8507166,
+      "ingestType": "item",
+      "sourceResource": {
+        "collection": {
+          "id": "0626c4321ccd570f59dc67ca715bed86",
+          "@id": "http://dp.la/api/collections/0626c4321ccd570f59dc67ca715bed86",
+          "description": "",
+          "title": "Hugh Morton Collection of Photographs and Films"
+        },
+        "description": [
+          "Cougar and cougar kittens, most likely in Grandfather Mountain, NC wildlife habitat."
+        ],
+        "@id": "http://dp.la/api/items/fbb7d3c8687ad9e5ea8faef6412a4a4d#sourceResource",
+        "rights": "Copyright North Carolina Collection, University of North Carolina at Chapel Hill Library. The images in this collection are made available for use in research, private study, and teaching. Prior permission from the North Carolina Collection is required for any commercial use.",
+        "identifier": [
+          "P081",
+          "http://dc.lib.unc.edu/u?/morton_highlights,4156"
+        ],
+        "creator": [
+          "Morton, Hugh M."
+        ],
+        "subject": [
+          {
+            "name": "1970-1979"
+          },
+          {
+            "name": "1980-1989"
+          },
+          {
+            "name": "Pumas"
+          },
+          {
+            "name": "Baby animals"
+          },
+          {
+            "name": "Zoo animals"
+          },
+          {
+            "name": "Grandfather Mountain (N.C.)"
+          },
+          {
+            "name": "Linville (N.C.)"
+          },
+          {
+            "name": "Avery County (N.C.)"
+          }
+        ],
+        "type": "image",
+        "title": [
+          "Cougar and kittens"
+        ],
+        "format": [
+          "Photographs",
+          "Color roll film negative",
+          "120 (80.8 x 80.8mm / 2 x 2 in.)"
+        ],
+        "stateLocatedIn": [
+          {
+            "name": "North Carolina"
+          }
+        ],
+        "publisher": [
+          "University of North Carolina at Chapel Hill, Wilson Library, North Carolina Collection Photographic Archives"
+        ],
+        "date": {
+          "displayDate": "1970s-1980s",
+          "begin": "1970",
+          "end": "1970"
+        }
+      },
+      "originalRecord": {
+        "id": "urn:brevard.lib.unc.eduunc_morton_highlights:oai:dc.lib.unc.edu:morton_highlights/4156",
+        "about": {
+          "oaiProvenance:provenance": {
+            "xsi:schemaLocation": "http://www.openarchives.org/OAI/2.0/provenance http://www.openarchives.org/OAI/2.0/provenance.xsd",
+            "oaiProvenance:originDescription": {
+              "harvestDate": "2016-10-21",
+              "altered": "true",
+              "oaiProvenance:metadataNamespace": "http://www.openarchives.org/OAI/2.0/",
+              "oaiProvenance:datestamp": "2016-10-21",
+              "oaiProvenance:identifier": "oai:dc.lib.unc.edu:morton_highlights/4156",
+              "oaiProvenance:baseURL": "http://dc.lib.unc.edu/cgi-bin/oai.exe"
+            },
+            "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "xmlns:oaiProvenance": "http://www.openarchives.org/OAI/2.0/provenance"
+          }
+        },
+        "header": {
+          "setSpec": "unc_morton_highlights",
+          "identifier": "urn:brevard.lib.unc.eduunc_morton_highlights:oai:dc.lib.unc.edu:morton_highlights/4156",
+          "datestamp": "2016-10-21"
+        },
+        "provider": {
+          "name": "North Carolina Digital Heritage Center",
+          "@id": "http://dp.la/api/contributor/digitalnc"
+        },
+        "collection": {
+          "id": "0626c4321ccd570f59dc67ca715bed86",
+          "@id": "http://dp.la/api/collections/0626c4321ccd570f59dc67ca715bed86",
+          "description": "",
+          "title": "Hugh Morton Collection of Photographs and Films"
+        },
+        "metadata": {
+          "mods": {
+            "xsi:schemaLocation": "http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd",
+            "location": [
+              {
+                "url": {
+                  "access": "object in context",
+                  "#text": "http://dc.lib.unc.edu/u?/morton_highlights,4156",
+                  "usage": "primary display"
+                }
+              },
+              {
+                "url": {
+                  "access": "preview",
+                  "#text": "http://dc.lib.unc.edu/utils/getthumbnail/collection/morton_highlights/id/4156"
+                }
+              }
+            ],
+            "name": {
+              "role": {
+                "roleTerm": "creator"
+              },
+              "namePart": "Morton, Hugh M."
+            },
+            "accessCondition": {
+              "type": "local rights statements",
+              "#text": "Copyright North Carolina Collection, University of North Carolina at Chapel Hill Library. The images in this collection are made available for use in research, private study, and teaching. Prior permission from the North Carolina Collection is required for any commercial use."
+            },
+            "version": "3.4",
+            "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+            "note": [
+              {
+                "type": "content",
+                "#text": "Cougar and cougar kittens, most likely in Grandfather Mountain, NC wildlife habitat."
+              },
+              {
+                "type": "ownership",
+                "#text": "University of North Carolina at Chapel Hill"
+              }
+            ],
+            "genre": "Image",
+            "subject": [
+              {
+                "topic": "1970-1979"
+              },
+              {
+                "topic": "1980-1989"
+              },
+              {
+                "topic": "Pumas"
+              },
+              {
+                "topic": "Baby animals"
+              },
+              {
+                "topic": "Zoo animals"
+              },
+              {
+                "topic": "Grandfather Mountain (N.C.)"
+              },
+              {
+                "topic": "Linville (N.C.)"
+              },
+              {
+                "topic": "Avery County (N.C.)"
+              }
+            ],
+            "identifier": [
+              "P081",
+              "http://dc.lib.unc.edu/u?/morton_highlights,4156"
+            ],
+            "titleInfo": {
+              "title": "Cougar and kittens"
+            },
+            "originInfo": {
+              "dateCreated": {
+                "keyDate": "yes",
+                "#text": "1970s-1980s"
+              },
+              "publisher": "University of North Carolina at Chapel Hill, Wilson Library, North Carolina Collection Photographic Archives"
+            },
+            "xmlns:oai_dc": "http://www.openarchives.org/OAI/2.0/oai_dc/",
+            "physicalDescription": {
+              "form": [
+                "Photographs",
+                "Color roll film negative",
+                "120 (80.8 x 80.8mm / 2 x 2 in.)"
+              ]
+            },
+            "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "xmlns": "http://www.loc.gov/mods/v3"
+          }
+        }
+      },
+      "ingestionSequence": 28,
+      "@context": "http://dp.la/api/items/context"
+    },
+    {
+      "id": "809880525402b4b248fb83acff39902c",
+      "provider": {
+        "name": "North Carolina Digital Heritage Center",
+        "@id": "http://dp.la/api/contributor/digitalnc"
+      },
+      "object": "http://dc.lib.unc.edu/utils/getthumbnail/collection/morton_highlights/id/4168",
+      "@id": "http://dp.la/api/items/809880525402b4b248fb83acff39902c",
+      "ingestDate": "2016-12-10T03:00:09.823186Z",
+      "_id": "digitalnc--urn:brevard.lib.unc.eduunc_morton_highlights:oai:dc.lib.unc.edu:morton_highlights/4168",
+      "dataProvider": "University of North Carolina at Chapel Hill",
+      "@type": "ore:Aggregation",
+      "isShownAt": "http://dc.lib.unc.edu/u?/morton_highlights,4168",
+      "_rev": "8-e2ba89430ab9183130516a4d47485ff6",
+      "aggregatedCHO": "#sourceResource",
+      "admin": {
+        "validation_message": null,
+        "valid_after_enrich": true,
+        "sourceResource": {
+          "title": "Cougar and kittens"
+        }
+      },
+      "score": 7.8507166,
+      "ingestType": "item",
+      "sourceResource": {
+        "collection": {
+          "id": "0626c4321ccd570f59dc67ca715bed86",
+          "@id": "http://dp.la/api/collections/0626c4321ccd570f59dc67ca715bed86",
+          "description": "",
+          "title": "Hugh Morton Collection of Photographs and Films"
+        },
+        "description": [
+          "Cougar and cougar kittens at Grandfather Mountain, NC wildlife habitat."
+        ],
+        "@id": "http://dp.la/api/items/809880525402b4b248fb83acff39902c#sourceResource",
+        "rights": "Copyright North Carolina Collection, University of North Carolina at Chapel Hill Library. The images in this collection are made available for use in research, private study, and teaching. Prior permission from the North Carolina Collection is required for any commercial use.",
+        "identifier": [
+          "P081",
+          "http://dc.lib.unc.edu/u?/morton_highlights,4168"
+        ],
+        "creator": [
+          "Morton, Hugh M."
+        ],
+        "subject": [
+          {
+            "name": "1970-1979"
+          },
+          {
+            "name": "1980-1989"
+          },
+          {
+            "name": "Pumas"
+          },
+          {
+            "name": "Baby animals"
+          },
+          {
+            "name": "Zoo animals"
+          },
+          {
+            "name": "Grandfather Mountain (N.C.)"
+          },
+          {
+            "name": "Linville (N.C.)"
+          },
+          {
+            "name": "Avery County (N.C.)"
+          }
+        ],
+        "type": "image",
+        "title": [
+          "Cougar and kittens"
+        ],
+        "format": [
+          "Photographs",
+          "Color roll film negative",
+          "120 (80.8 x 80.8mm / 2 x 2 in.)"
+        ],
+        "stateLocatedIn": [
+          {
+            "name": "North Carolina"
+          }
+        ],
+        "publisher": [
+          "University of North Carolina at Chapel Hill, Wilson Library, North Carolina Collection Photographic Archives"
+        ],
+        "date": {
+          "displayDate": "1970s-1980s",
+          "begin": "1970",
+          "end": "1970"
+        }
+      },
+      "originalRecord": {
+        "id": "urn:brevard.lib.unc.eduunc_morton_highlights:oai:dc.lib.unc.edu:morton_highlights/4168",
+        "about": {
+          "oaiProvenance:provenance": {
+            "xsi:schemaLocation": "http://www.openarchives.org/OAI/2.0/provenance http://www.openarchives.org/OAI/2.0/provenance.xsd",
+            "oaiProvenance:originDescription": {
+              "harvestDate": "2016-10-21",
+              "altered": "true",
+              "oaiProvenance:metadataNamespace": "http://www.openarchives.org/OAI/2.0/",
+              "oaiProvenance:datestamp": "2016-10-21",
+              "oaiProvenance:identifier": "oai:dc.lib.unc.edu:morton_highlights/4168",
+              "oaiProvenance:baseURL": "http://dc.lib.unc.edu/cgi-bin/oai.exe"
+            },
+            "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "xmlns:oaiProvenance": "http://www.openarchives.org/OAI/2.0/provenance"
+          }
+        },
+        "header": {
+          "setSpec": "unc_morton_highlights",
+          "identifier": "urn:brevard.lib.unc.eduunc_morton_highlights:oai:dc.lib.unc.edu:morton_highlights/4168",
+          "datestamp": "2016-10-21"
+        },
+        "provider": {
+          "name": "North Carolina Digital Heritage Center",
+          "@id": "http://dp.la/api/contributor/digitalnc"
+        },
+        "collection": {
+          "id": "0626c4321ccd570f59dc67ca715bed86",
+          "@id": "http://dp.la/api/collections/0626c4321ccd570f59dc67ca715bed86",
+          "description": "",
+          "title": "Hugh Morton Collection of Photographs and Films"
+        },
+        "metadata": {
+          "mods": {
+            "xsi:schemaLocation": "http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd",
+            "location": [
+              {
+                "url": {
+                  "access": "object in context",
+                  "#text": "http://dc.lib.unc.edu/u?/morton_highlights,4168",
+                  "usage": "primary display"
+                }
+              },
+              {
+                "url": {
+                  "access": "preview",
+                  "#text": "http://dc.lib.unc.edu/utils/getthumbnail/collection/morton_highlights/id/4168"
+                }
+              }
+            ],
+            "name": {
+              "role": {
+                "roleTerm": "creator"
+              },
+              "namePart": "Morton, Hugh M."
+            },
+            "accessCondition": {
+              "type": "local rights statements",
+              "#text": "Copyright North Carolina Collection, University of North Carolina at Chapel Hill Library. The images in this collection are made available for use in research, private study, and teaching. Prior permission from the North Carolina Collection is required for any commercial use."
+            },
+            "version": "3.4",
+            "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+            "note": [
+              {
+                "type": "content",
+                "#text": "Cougar and cougar kittens at Grandfather Mountain, NC wildlife habitat."
+              },
+              {
+                "type": "ownership",
+                "#text": "University of North Carolina at Chapel Hill"
+              }
+            ],
+            "genre": "Image",
+            "subject": [
+              {
+                "topic": "1970-1979"
+              },
+              {
+                "topic": "1980-1989"
+              },
+              {
+                "topic": "Pumas"
+              },
+              {
+                "topic": "Baby animals"
+              },
+              {
+                "topic": "Zoo animals"
+              },
+              {
+                "topic": "Grandfather Mountain (N.C.)"
+              },
+              {
+                "topic": "Linville (N.C.)"
+              },
+              {
+                "topic": "Avery County (N.C.)"
+              }
+            ],
+            "identifier": [
+              "P081",
+              "http://dc.lib.unc.edu/u?/morton_highlights,4168"
+            ],
+            "titleInfo": {
+              "title": "Cougar and kittens"
+            },
+            "originInfo": {
+              "dateCreated": {
+                "keyDate": "yes",
+                "#text": "1970s-1980s"
+              },
+              "publisher": "University of North Carolina at Chapel Hill, Wilson Library, North Carolina Collection Photographic Archives"
+            },
+            "xmlns:oai_dc": "http://www.openarchives.org/OAI/2.0/oai_dc/",
+            "physicalDescription": {
+              "form": [
+                "Photographs",
+                "Color roll film negative",
+                "120 (80.8 x 80.8mm / 2 x 2 in.)"
+              ]
+            },
+            "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "xmlns": "http://www.loc.gov/mods/v3"
+          }
+        }
+      },
+      "ingestionSequence": 28,
+      "@context": "http://dp.la/api/items/context"
+    }
+  ],
+  "facets": [],
+  "start": 0,
+  "limit": 10,
+  "count": 338
+}

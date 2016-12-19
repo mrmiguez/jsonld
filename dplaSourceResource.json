@@ -1,0 +1,42 @@
+{
+  "title": "Florida",
+  "@id": "http://dp.la/api/items/68ca063a1c8965f83e795a92ee4052d1#sourceResource",
+  "creator": [
+    "Tilden, Samuel J. (Samuel Jones), 1814-1886"
+  ],
+  "subject": [
+    {
+      "name": "Presidential elections"
+    },
+    {
+      "name": "Vote counting"
+    },
+    {
+      "name": "Documents"
+    }
+  ],
+  "collection": {
+    "title": "Series IX. Presidential election of 1876",
+    "id": "d51fcbbce1d79cda07aafc2f456e0e81",
+    "@id": "http://dp.la/api/collections/d51fcbbce1d79cda07aafc2f456e0e81"
+  },
+  "relation": "Series IX. Presidential election of 1876",
+  "type": "text",
+  "date": {
+    "displayDate": "1876 - 1878",
+    "end": "1878",
+    "begin": "1876"
+  },
+  "stateLocatedIn": [
+    {
+      "name": "New York"
+    }
+  ],
+  "language": [
+    {
+      "name": "English",
+      "iso639_3": "eng"
+    }
+  ],
+  "rights": "We believe that this item has no known US copyright restrictions. The item may be subject to rights of privacy, rights of publicity and other restrictions. Though not required, if you want to credit us as the source, please use the following statement, \"From The New York Public Library.\" Doing so helps us track how our collection is used and helps justify freely releasing even more content in the future."
+}
