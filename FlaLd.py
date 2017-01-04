@@ -2,7 +2,7 @@ import json
 from pyld import jsonld
 from pymods import MODS, FSUDL
 
-testData = MODS('testData/FSU_WW2_14_0037_08.xml')
+testData = MODS('testData/fsu_nap01-1.xml')
 docs = []
 for record in testData.record_list:
     sourceResource = {}
@@ -13,9 +13,13 @@ for record in testData.record_list:
     if MODS.date_constructor(record) is not None:
         date = MODS.date_constructor(record)
         if ' - ' in date:
-            sourceResource['date'] = { "displayDate": date, "begin": date[0:4], "end": date[-4:] }
+            sourceResource['date'] = { "displayDate": date,
+                                       "begin": date[0:4],
+                                       "end": date[-4:] }
         else:
-            sourceResource['date'] = { "displayDate": date, "begin": date, "end": date }
+            sourceResource['date'] = { "displayDate": date,
+                                       "begin": date,
+                                       "end": date }
 
     # sourceResource.extent
 
@@ -24,10 +28,25 @@ for record in testData.record_list:
     # sourceResource.geographic
 
     # sourceResource.identifier
+    sourceResource['identifier'] = { "@id": FSUDL.purl_search(record),
+                                     "text": FSUDL.local_identifier(record) }
+
+    # sourceResource.language
+    if MODS.language(record) is not None:
+        language_list = []
+        for language in MODS.language(record):
+            if len(language) > 1:
+                language_dict = { "name": language['text'],
+                                  "iso_639_3": language['code'] }
+            else:
+                language_dict = { "name": language['text'] }
+            language_list.append(language_dict)
+        sourceResource['language'] = language_list
 
     # sourceResource.rights
     if len(MODS.rights(record)) > 1:
-        sourceResource['rights'] = {"@id": MODS.rights(record)['URI'], "text": MODS.rights(record)['text']}
+        sourceResource['rights'] = {"@id": MODS.rights(record)['URI'],
+                                    "text": MODS.rights(record)['text']}
     else:
         sourceResource['rights'] = MODS.rights(record)['text']
 
@@ -42,7 +61,8 @@ for record in testData.record_list:
                     subject_term = ""
                     for child in subject['children']:
                         subject_term = subject_term + '--' + child['term']
-                    sourceResource['subject'].append({"@id": subject['valueURI'], "name": subject_term.strip('.,-')})
+                    sourceResource['subject'].append({"@id": subject['valueURI'],
+                                                      "name": subject_term.strip('.,-')})
 
                 # LCNAF subjects
 
@@ -52,7 +72,8 @@ for record in testData.record_list:
     # sourceResource.type
     sourceResource['type'] = MODS.type_of_resource(record)
 
-    docs.append({"@context": "http://api.dp.la/items/context", "sourceResource": sourceResource})
+    docs.append({"@context": "http://api.dp.la/items/context",
+                 "sourceResource": sourceResource})
 
 #compacted = jsonld.compact(docs, "http://api.dp.la/items/context")
 #expanded = jsonld.expand(docs)
