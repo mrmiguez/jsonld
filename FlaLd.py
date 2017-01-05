@@ -2,7 +2,7 @@ import json
 from pyld import jsonld
 from pymods import MODS, FSUDL
 
-testData = MODS('testData/fsu_nap01-1.xml')
+testData = MODS('testData/FSU_WW2_14_0037_08.xml')
 docs = []
 for record in testData.record_list:
     sourceResource = {}
@@ -46,6 +46,27 @@ for record in testData.record_list:
             sourceResource['extent'] = MODS.extent(record)[0]
 
     # sourceResource.format (i.e. Genre)
+    if MODS.genre(record) is not None:
+        if len(MODS.genre(record)) > 1:
+            sourceResource['format'] = []
+            for format in MODS.genre(record):
+                format_elem = {}
+                for key, value in format.items():
+                    if 'term' == key:
+                        format_elem['name'] = value
+                    elif 'valueURI' == key:
+                        format_elem['@id'] = value
+                sourceResource['format'].append(format_elem)
+        else:
+            format_elem = {}
+            for key, value in MODS.genre(record)[0].items():
+                if 'term' == key:
+                    format_elem['name'] = value
+                elif 'valueURI' == key:
+                    format_elem['@id'] = value
+            sourceResource['format'] = format_elem
+
+
 
     # sourceResource.geographic
 
