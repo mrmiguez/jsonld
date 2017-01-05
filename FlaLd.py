@@ -5,7 +5,6 @@ from pymods import MODS, FSUDL
 # TODO
 # -ore:aggregation
 # -sourceResource.description
-# -sourceResource.collection
 """
 
 def write_json_ld(docs):
@@ -18,7 +17,7 @@ docs = []
 for record in testData.record_list:
     sourceResource = {}
 
-    # sourceResource.collection todo
+    # sourceResource.collection
     if MODS.collection(record) is not None:
         collection = MODS.collection(record)
         sourceResource['collection'] = { "name": collection['title'], "host": collection['location'] }
@@ -119,7 +118,7 @@ for record in testData.record_list:
     if MODS.subject(record) is not None:
         sourceResource['subject'] = []
         for subject in MODS.subject(record):
-            if subject['authority'] is not None:
+            if 'authority' in subject.keys():
 
                 # LCSH subjects
                 if 'lcsh' == subject['authority']:
@@ -127,9 +126,12 @@ for record in testData.record_list:
                     for child in subject['children']:
                         subject_term = subject_term + '--' + child['term']
                     sourceResource['subject'].append({"@id": subject['valueURI'],
-                                                      "name": subject_term.strip('.,-')})
+                                                      "name": subject_term.strip('.,-') })
 
-                # LCNAF subjects todo
+                # LCNAF subjects
+                elif ('naf' or 'lcnaf') == subject['authority']:
+                    sourceResource['subject'].append({"@id": subject['valueURI'],
+                                                      "name": subject['text'] })
 
     # sourceResource.title
     sourceResource['title'] = MODS.title_constructor(record)[0]
