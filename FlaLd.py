@@ -4,7 +4,7 @@ from pymods import MODS, FSUDL
 """
 # TODO
 # -ore:aggregation
-# -sourceResource.description
+# -edm:WebResource
 """
 
 def write_json_ld(docs):
@@ -152,12 +152,3 @@ for record in testData.record_list:
 #write_json_ld(docs)
 
 print(json.dumps(docs, indent=2))
-
-""" Unimplemented writer
-with open('testData/fsu_nap01-1.jsonld', 'w') as jsonOutput:
-    docs = []
-    for record in testData.record_list:
-        sourceResource = {}
-        print(MODS.title_constructor(record)[0])
-        docs.append(sourceResource)
-"""
