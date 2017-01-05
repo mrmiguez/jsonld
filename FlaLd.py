@@ -1,11 +1,31 @@
 import json
-from pyld import jsonld
 from pymods import MODS, FSUDL
 
-testData = MODS('testData/FSU_WW2_14_0037_08.xml')
+"""
+# TODO
+# -ore:aggregation
+# -sourceResource.description
+# -sourceResource.collection
+"""
+
+def write_json_ld(docs):
+    with open('testData/fsu_nap01-1.json', 'w') as jsonOutput:
+        json.dump(docs, jsonOutput, indent=2)
+
+
+testData = MODS('testData/fsu_nap01-1.xml')
 docs = []
 for record in testData.record_list:
     sourceResource = {}
+
+    # sourceResource.collection todo
+    if MODS.collection(record) is not None:
+        collection = MODS.collection(record)
+        sourceResource['collection'] = { "name": collection['title'], "host": collection['location'] }
+        if 'url' in collection.keys():
+            sourceResource['collection']['_:id'] = collection['url']
+
+    # sourceResource.contributor todo
 
     # sourceResource.creator
     if MODS.name_constructor(record) is not None:
@@ -35,6 +55,8 @@ for record in testData.record_list:
             sourceResource['date'] = { "displayDate": date,
                                        "begin": date,
                                        "end": date }
+
+    # sourceResource.description todo
 
     # sourceResource.extent
     if MODS.extent(record) is not None:
@@ -68,7 +90,7 @@ for record in testData.record_list:
 
 
 
-    # sourceResource.geographic
+    # sourceResource.geographic todo
 
     # sourceResource.identifier
     sourceResource['identifier'] = { "@id": FSUDL.purl_search(record),
@@ -107,7 +129,7 @@ for record in testData.record_list:
                     sourceResource['subject'].append({"@id": subject['valueURI'],
                                                       "name": subject_term.strip('.,-')})
 
-                # LCNAF subjects
+                # LCNAF subjects todo
 
     # sourceResource.title
     sourceResource['title'] = MODS.title_constructor(record)[0]
@@ -118,8 +140,7 @@ for record in testData.record_list:
     docs.append({"@context": "http://api.dp.la/items/context",
                  "sourceResource": sourceResource})
 
-#compacted = jsonld.compact(docs, "http://api.dp.la/items/context")
-#expanded = jsonld.expand(docs)
+#write_json_ld(docs)
 
 print(json.dumps(docs, indent=2))
 
@@ -127,7 +148,7 @@ print(json.dumps(docs, indent=2))
 with open('testData/fsu_nap01-1.jsonld', 'w') as jsonOutput:
     docs = []
     for record in testData.record_list:
-        sourceRecource = {}
+        sourceResource = {}
         print(MODS.title_constructor(record)[0])
-        docs.append(sourceRecource)
+        docs.append(sourceResource)
 """
