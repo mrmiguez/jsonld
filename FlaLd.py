@@ -55,7 +55,14 @@ for record in testData.record_list:
                                        "begin": date,
                                        "end": date }
 
-    # sourceResource.description todo
+    # sourceResource.description
+    if MODS.abstract(record) is not None:
+        if len(MODS.abstract(record)) > 1:
+            sourceResource['description'] = []
+            for description in MODS.abstract(record):
+                sourceResource['description'].append(description)
+        else:
+            sourceResource['description'] = MODS.abstract(record)
 
     # sourceResource.extent
     if MODS.extent(record) is not None:
