@@ -3,11 +3,27 @@ from pyld import jsonld
 from pymods import MODS, FSUDL
 
 testData = MODS('testData/fsu_nap01-1.xml')
+print(len(testData.record_list)) #test
 docs = []
 for record in testData.record_list:
     sourceResource = {}
 
     # sourceResource.creator
+    if MODS.name_constructor(record) is not None:
+        sourceResource['creator'] = []
+        for name in MODS.name_constructor(record):
+            if name['roleText'] == 'Creator':
+                if 'valueURI' in name.keys():
+                    sourceResource['creator'].append({ "@id": name['valueURI'],
+                                                       "name": name['text'] })
+                else:
+                    sourceResource['creator'].append({ "name": name['text'] })
+            elif name['roleCode'] == 'cre':
+                if 'valueURI' in name.keys():
+                    sourceResource['creator'].append({ "@id": name['valueURI'],
+                                                       "name": name['text'] })
+                else:
+                    sourceResource['creator'].append({ "name": name['text'] })
 
     # sourceResource.date
     if MODS.date_constructor(record) is not None:
