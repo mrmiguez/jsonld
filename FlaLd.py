@@ -3,7 +3,6 @@ from pyld import jsonld
 from pymods import MODS, FSUDL
 
 testData = MODS('testData/fsu_nap01-1.xml')
-print(len(testData.record_list)) #test
 docs = []
 for record in testData.record_list:
     sourceResource = {}
@@ -38,6 +37,13 @@ for record in testData.record_list:
                                        "end": date }
 
     # sourceResource.extent
+    if MODS.extent(record) is not None:
+        if len(MODS.extent(record)) > 1:
+            sourceResource['extent'] = []
+            for extent in MODS.extent(record):
+                sourceResource['extent'].append(extent)
+        else:
+            sourceResource['extent'] = MODS.extent(record)[0]
 
     # sourceResource.format (i.e. Genre)
 
