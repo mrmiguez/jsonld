@@ -121,7 +121,7 @@ for record in testData.record_list:
     else:
         sourceResource['rights'] = MODS.rights(record)['text']
 
-    #sourceResource.subject
+    # sourceResource.subject
     if MODS.subject(record) is not None:
         sourceResource['subject'] = []
         for subject in MODS.subject(record):
@@ -146,8 +146,23 @@ for record in testData.record_list:
     # sourceResource.type
     sourceResource['type'] = MODS.type_of_resource(record)
 
+    # aggregation.data provider todo
+    data_provider = "Florida State University Libraries"
+
+    # aggregation.preview todo
+    preview = "link to thumbnail"
+
+    # aggregation.provider todo
+    provider = {"name": "TO BE DETERMINED",
+                "@id": "DPLA provides?"}
+
     docs.append({"@context": "http://api.dp.la/items/context",
-                 "sourceResource": sourceResource})
+                 "sourceResource": sourceResource,
+                 "aggregatedCHO": "#sourceResource",
+                 "dataProvider": data_provider,
+                 "isHownAt": FSUDL.purl_search(record),
+                 "preview": preview,
+                 "provider": provider})
 
 #write_json_ld(docs)
 
