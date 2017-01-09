@@ -1,3 +1,4 @@
+import re
 import json
 from lxml import etree
 
@@ -57,11 +58,17 @@ class OAI_QDC:
 
     def simple_lookup(record, elem):
         if record.find('{0}'.format(elem)) is not None:
-            return record.find('{0}'.format(elem)).text
+            results = []
+            for item in record.findall('{0}'.format(elem)):
+                results.append(item.text)
+            return results
 
     def split_lookup(record, elem, delimiter=';'):
         if record.find('{0}'.format(elem)) is not None:
-            return record.find('{0}'.format(elem)).text.split(delimiter)
+            results = []
+            for item in record.findall('{0}'.format(elem)):
+                results.append(item.text.split(delimiter))
+            return results
 
 with open('testData/um_um-1.xml') as testData:
     records = OAI_QDC(testData)
@@ -112,16 +119,26 @@ with open('testData/um_um-1.xml') as testData:
 
             # sourceResource.rights
             # figure out returning URI ... re?
+            rightsURI = re.compile('http://rightsstatements')
             if OAI_QDC.simple_lookup(record, './/{0}rights'.format(nameSpace_default['dc'])) is not None:
-                sourceResource['rights'] = OAI_QDC.simple_lookup(record, './/{0}rights'.format(nameSpace_default['dc']))
+                if len(record.findall('.//{0}rights'.format(nameSpace_default['dc']))) > 1:
+                    for rights_statement in OAI_QDC.simple_lookup(record, './/{0}rights'.format(nameSpace_default['dc'])):
+                        URI = rightsURI.search(rights_statement)
+                        if URI:
+                            URI_match = URI.string.split(" ")[-1]
+                        else:
+                            rights_text = rights_statement
+                    sourceResource['rights'] = { "@id": URI_match, "text": rights_text }
+                else:
+                    sourceResource['rights'] = OAI_QDC.simple_lookup(record, './/{0}rights'.format(nameSpace_default['dc']))
 
             # sourceResource.subject
             if OAI_QDC.simple_lookup(record, './/{0}subject'.format(nameSpace_default['dc'])) is not None:
                 sourceResource['subject'] = []
-                for subject in record.findall('.//{0}subject'.format(nameSpace_default['dc'])):
-                    for term in OAI_QDC.split_lookup(record, './/{0}subject'.format(nameSpace_default['dc'])):
+                for element in OAI_QDC.split_lookup(record, './/{0}subject'.format(nameSpace_default['dc'])):
+                    for term in element:
                         if len(term) > 0:
-                            sourceResource['subject'].append({"name": term.strip(" ")})
+                            sourceResource['subject'].append({"name": term.strip(" ") })
 
 
             # sourceResource.title
