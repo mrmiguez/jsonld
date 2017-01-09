@@ -5,7 +5,7 @@ nameSpace_default = { None: '{http://www.loc.gov/mods/v3}',
                       'oai_dc': '{http://www.openarchives.org/OAI/2.0/oai_dc/}',
                       'dc': '{http://purl.org/dc/elements/1.1/}',
                       'mods': '{http://www.loc.gov/mods/v3}',
-                      'dcterms': '{http://purl.org/dc/terms}',
+                      'dcterms': '{http://purl.org/dc/terms/}',
                       'xlink': '{http://www.w3.org/1999/xlink}',
                       'repox': '{http://repox.ist.utl.pt}',
                       'oai_qdc': '{http://worldcat.org/xmlschemas/qdc-1.0/}'}
@@ -55,6 +55,99 @@ class OAI_QDC:
 
         self.record_list = record_list
 
+    def simple_lookup(record, elem):
+        if record.find('{0}'.format(elem)) is not None:
+            return record.find('{0}'.format(elem)).text
+
+    def split_lookup(record, elem, delimiter=';'):
+        if record.find('{0}'.format(elem)) is not None:
+            return record.find('{0}'.format(elem)).text.split(delimiter)
+
 with open('testData/um_um-1.xml') as testData:
     records = OAI_QDC(testData)
-    print(len(records.record_list))
+    docs = []
+    for record in records.record_list:
+
+        if 'deleted' in record.attrib.keys():
+            if record.attrib['deleted'] == 'true':
+                pass
+
+        else:
+
+            sourceResource = {}
+
+            # sourceResource.alternative
+            if OAI_QDC.simple_lookup(record, './/{0}alternative'.format(nameSpace_default['dcterms'])) is not None:
+                sourceResource['alternative'] = OAI_QDC.simple_lookup(record, './/{0}alternative'.format(nameSpace_default['dcterms']))
+
+            # sourceResource.collection
+
+            # sourceResource.contributor
+
+            # sourceResource.creator
+            if OAI_QDC.simple_lookup(record, './/{0}creator'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['creator'] = OAI_QDC.simple_lookup(record, './/{0}creator'.format(nameSpace_default['dc']))
+
+            # sourceResource.date
+            if OAI_QDC.simple_lookup(record, './/{0}created'.format(nameSpace_default['dcterms'])) is not None:
+                sourceResource['date'] = OAI_QDC.simple_lookup(record, './/{0}created'.format(nameSpace_default['dcterms']))
+
+            # sourceResource.description
+
+            # sourceResource.extent
+            if OAI_QDC.simple_lookup(record, './/{0}extent'.format(nameSpace_default['dcterms'])) is not None:
+                sourceResource['extent'] = OAI_QDC.simple_lookup(record, './/{0}extent'.format(nameSpace_default['dcterms']))
+
+            # sourceResource.format (i.e. Genre)
+
+            # sourceResource.geographic
+
+            # sourceResource.identifier
+            if OAI_QDC.simple_lookup(record, './/{0}identifier'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['identifier'] = OAI_QDC.simple_lookup(record, './/{0}identifier'.format(nameSpace_default['dc']))
+
+            # sourceResource.language
+            if OAI_QDC.simple_lookup(record, './/{0}language'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['language'] = { "@id": OAI_QDC.simple_lookup(record, './/{0}language'.format(nameSpace_default['dc'])) }
+
+            # sourceResource.rights
+            # figure out returning URI ... re?
+            if OAI_QDC.simple_lookup(record, './/{0}rights'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['rights'] = OAI_QDC.simple_lookup(record, './/{0}rights'.format(nameSpace_default['dc']))
+
+            # sourceResource.subject
+            if OAI_QDC.simple_lookup(record, './/{0}subject'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['subject'] = []
+                for subject in record.findall('.//{0}subject'.format(nameSpace_default['dc'])):
+                    for term in OAI_QDC.split_lookup(record, './/{0}subject'.format(nameSpace_default['dc'])):
+                        if len(term) > 0:
+                            sourceResource['subject'].append({"name": term.strip(" ")})
+
+
+            # sourceResource.title
+            if OAI_QDC.simple_lookup(record, './/{0}title'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['title'] = OAI_QDC.simple_lookup(record, './/{0}title'.format(nameSpace_default['dc']))
+
+            # sourceResource.type
+            if OAI_QDC.simple_lookup(record, './/{0}type'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['type'] = OAI_QDC.simple_lookup(record, './/{0}type'.format(nameSpace_default['dc']))
+
+            # aggregation.data provider
+            data_provider = "temp"
+
+            # aggregation.preview
+            preview = "temp"
+
+            # aggregation.provider
+            provider = {"name": "TO BE DETERMINED",
+                        "@id": "DPLA provides?"}
+
+            docs.append({"@context": "http://api.dp.la/items/context",
+                         "sourceResource": sourceResource,
+                         "aggregatedCHO": "#sourceResource",
+                         "dataProvider": data_provider,
+                         "isShownAt": "temp",
+                         "preview": preview,
+                         "provider": provider})
+
+print(json.dumps(docs, indent=2))

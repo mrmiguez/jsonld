@@ -17,6 +17,13 @@ docs = []
 for record in testData.record_list:
     sourceResource = {}
 
+    # sourceResource.alternative
+    if MODS.title_constructor(record)[1:] is not None:
+        sourceResource['alternative'] = []
+        if len(MODS.title_constructor(record)[1:]) >= 1:
+            for alternative_title in MODS.title_constructor(record)[1:]:
+                sourceResource['alternative'].append(alternative_title)
+
     # sourceResource.collection
     if MODS.collection(record) is not None:
         collection = MODS.collection(record)
@@ -24,7 +31,7 @@ for record in testData.record_list:
         if 'url' in collection.keys():
             sourceResource['collection']['_:id'] = collection['url']
 
-    # sourceResource.contributor todo
+    # sourceResource.contributor
 
     # sourceResource.creator
     if MODS.name_constructor(record) is not None:
@@ -96,7 +103,7 @@ for record in testData.record_list:
 
 
 
-    # sourceResource.geographic todo
+    # sourceResource.geographic
 
     # sourceResource.identifier
     sourceResource['identifier'] = { "@id": FSUDL.purl_search(record),
@@ -146,13 +153,13 @@ for record in testData.record_list:
     # sourceResource.type
     sourceResource['type'] = MODS.type_of_resource(record)
 
-    # aggregation.data provider todo
+    # aggregation.data provider
     data_provider = "Florida State University Libraries"
 
-    # aggregation.preview todo
+    # aggregation.preview
     preview = "link to thumbnail"
 
-    # aggregation.provider todo
+    # aggregation.provider
     provider = {"name": "TO BE DETERMINED",
                 "@id": "DPLA provides?"}
 
@@ -160,7 +167,7 @@ for record in testData.record_list:
                  "sourceResource": sourceResource,
                  "aggregatedCHO": "#sourceResource",
                  "dataProvider": data_provider,
-                 "isHownAt": FSUDL.purl_search(record),
+                 "isShownAt": FSUDL.purl_search(record),
                  "preview": preview,
                  "provider": provider})
 
