@@ -1,6 +1,8 @@
 import re
 import json
+import requests
 from lxml import etree
+from bs4 import BeautifulSoup
 
 nameSpace_default = { None: '{http://www.loc.gov/mods/v3}',
                       'oai_dc': '{http://www.openarchives.org/OAI/2.0/oai_dc/}',
@@ -11,9 +13,18 @@ nameSpace_default = { None: '{http://www.loc.gov/mods/v3}',
                       'repox': '{http://repox.ist.utl.pt}',
                       'oai_qdc': '{http://worldcat.org/xmlschemas/qdc-1.0/}'}
 
+IANA_type_list = []
+
+IANA_XML = requests.get('http://www.iana.org/assignments/media-types/media-types.xml')
+IANA_parsed = BeautifulSoup(IANA_XML.text, "lxml")
+for type in IANA_parsed.find_all('file'):
+    IANA_type_list.append(type.text)
+
+
 def write_json_ld(docs):
     with open('testData/um_um-1.json', 'w') as jsonOutput:
         json.dump(docs, jsonOutput, indent=2)
+
 
 class OAI_QDC:
 
@@ -88,8 +99,9 @@ with open('testData/um_um-1.xml') as testData:
             sourceResource = {}
 
             # sourceResource.alternative
-            if OAI_QDC.simple_lookup(record, './/{0}alternative'.format(nameSpace_default['dcterms'])) is not None:
-                sourceResource['alternative'] = OAI_QDC.simple_lookup(record, './/{0}alternative'.format(nameSpace_default['dcterms']))
+            alt_title = OAI_QDC.simple_lookup(record, './/{0}alternative'.format(nameSpace_default['dcterms']))
+            if alt_title is not None:
+                sourceResource['alternative'] = alt_title
 
             # sourceResource.collection
 
@@ -98,26 +110,44 @@ with open('testData/um_um-1.xml') as testData:
                 sourceResource['contributor'] = []
                 for element in OAI_QDC.split_lookup(record, './/{0}contributor'.format(nameSpace_default['dc'])):
                     for name in element:
-                        if len(term) > 0:
+                        if len(name) > 0:
                             sourceResource['contributor'].append({"name": name.strip(" ") })
 
             # sourceResource.creator
             if OAI_QDC.simple_lookup(record, './/{0}creator'.format(nameSpace_default['dc'])) is not None:
-                sourceResource['creator'] = OAI_QDC.simple_lookup(record, './/{0}creator'.format(nameSpace_default['dc']))
+                sourceResource['creator'] = []
+                for element in OAI_QDC.split_lookup(record, './/{0}creator'.format(nameSpace_default['dc'])):
+                    for name in element:
+                        if len(name) > 0:
+                            sourceResource['creator'].append({"name": name.strip(" ") })
 
             # sourceResource.date
-            if OAI_QDC.simple_lookup(record, './/{0}created'.format(nameSpace_default['dcterms'])) is not None:
-                sourceResource['date'] = OAI_QDC.simple_lookup(record, './/{0}created'.format(nameSpace_default['dcterms']))
+            date = OAI_QDC.simple_lookup(record, './/{0}created'.format(nameSpace_default['dcterms']))
+            if date is not None:
+                sourceResource['date'] = { "begin": date, "end": date }
 
             # sourceResource.description
 
             # sourceResource.extent
             if OAI_QDC.simple_lookup(record, './/{0}extent'.format(nameSpace_default['dcterms'])) is not None:
-                sourceResource['extent'] = OAI_QDC.simple_lookup(record, './/{0}extent'.format(nameSpace_default['dcterms']))
+                sourceResource['extent'] = []
+                for element in OAI_QDC.split_lookup(record, './/{0}extent'.format(nameSpace_default['dcterms'])):
+                    for term in element:
+                        if len(term) > 0:
+                            sourceResource['extent'].append(term)
 
             # sourceResource.format
 
             # sourceResource.genre
+            if OAI_QDC.simple_lookup(record, './/{0}format'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['genre'] = []
+                for element in OAI_QDC.split_lookup(record, './/{0}format'.format(nameSpace_default['dc'])):
+                    for term in element:
+                        if term.lower() in IANA_type_list:
+                            file_format = term.lower()
+                            pass
+                        elif len(term) > 0:
+                            sourceResource['genre'].append(term)
 
             # sourceResource.geographic
 
@@ -127,8 +157,12 @@ with open('testData/um_um-1.xml') as testData:
                 sourceResource['identifier'] = local_id[0]
 
             # sourceResource.language
-            if OAI_QDC.simple_lookup(record, './/{0}language'.format(nameSpace_default['dc'])) is not None:
-                sourceResource['language'] = { "@id": OAI_QDC.simple_lookup(record, './/{0}language'.format(nameSpace_default['dc'])) }
+            language = OAI_QDC.simple_lookup(record, './/{0}language'.format(nameSpace_default['dc']))
+            if language is not None:
+                if len(language) > 3:
+                    sourceResource['language'] = {"name": language}
+                else:
+                    sourceResource['language'] = { "iso_639_3": language }
 
             # sourceResource.place
 
@@ -164,12 +198,16 @@ with open('testData/um_um-1.xml') as testData:
 
 
             # sourceResource.title
-            if OAI_QDC.simple_lookup(record, './/{0}title'.format(nameSpace_default['dc'])) is not None:
-                sourceResource['title'] = OAI_QDC.simple_lookup(record, './/{0}title'.format(nameSpace_default['dc']))
+            title = OAI_QDC.simple_lookup(record, './/{0}title'.format(nameSpace_default['dc']))
+            if title is not None:
+                sourceResource['title'] = title
 
             # sourceResource.type
-            if OAI_QDC.simple_lookup(record, './/{0}type'.format(nameSpace_default['dc'])) is not None:
-                sourceResource['type'] = OAI_QDC.simple_lookup(record, './/{0}type'.format(nameSpace_default['dc']))
+            type = OAI_QDC.simple_lookup(record, './/{0}type'.format(nameSpace_default['dc']))
+            if type is not None:
+                sourceResource['type'] = type
+
+            # webResource.fileFormat
 
             # aggregation.dataProvider
             data_provider = "temp"
@@ -193,10 +231,10 @@ with open('testData/um_um-1.xml') as testData:
                          "sourceResource": sourceResource,
                          "aggregatedCHO": "#sourceResource",
                          "dataProvider": data_provider,
-                         "isShownAt": "temp",
+                         "isShownAt": local_id[0],
                          "preview": preview,
                          "provider": provider})
 
-
-write_json_ld(docs)
-#print(json.dumps(docs, indent=2))
+            print(sourceResource['genre']) # elem test for individual records
+#write_json_ld(docs) # write test
+#print(json.dumps(docs, indent=2)) # dump test
