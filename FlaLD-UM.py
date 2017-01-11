@@ -105,7 +105,9 @@ with open('testData/um_um-1.xml') as testData:
             if OAI_QDC.simple_lookup(record, './/{0}extent'.format(nameSpace_default['dcterms'])) is not None:
                 sourceResource['extent'] = OAI_QDC.simple_lookup(record, './/{0}extent'.format(nameSpace_default['dcterms']))
 
-            # sourceResource.format (i.e. Genre)
+            # sourceResource.format
+
+            # sourceResource.genre
 
             # sourceResource.geographic
 
@@ -117,8 +119,17 @@ with open('testData/um_um-1.xml') as testData:
             if OAI_QDC.simple_lookup(record, './/{0}language'.format(nameSpace_default['dc'])) is not None:
                 sourceResource['language'] = { "@id": OAI_QDC.simple_lookup(record, './/{0}language'.format(nameSpace_default['dc'])) }
 
+            # sourceResource.place
+
+            # sourceResource.publisher
+
+            # sourceResource.relation
+
+            # sourceResource.isReplacedBy
+
+            # sourceResource.replaces
+
             # sourceResource.rights
-            # figure out returning URI ... re?
             rightsURI = re.compile('http://rightsstatements')
             if OAI_QDC.simple_lookup(record, './/{0}rights'.format(nameSpace_default['dc'])) is not None:
                 if len(record.findall('.//{0}rights'.format(nameSpace_default['dc']))) > 1:
@@ -149,8 +160,10 @@ with open('testData/um_um-1.xml') as testData:
             if OAI_QDC.simple_lookup(record, './/{0}type'.format(nameSpace_default['dc'])) is not None:
                 sourceResource['type'] = OAI_QDC.simple_lookup(record, './/{0}type'.format(nameSpace_default['dc']))
 
-            # aggregation.data provider
+            # aggregation.dataProvider
             data_provider = "temp"
+
+            # aggregation.isShownAt
 
             # aggregation.preview
             preview = "temp"

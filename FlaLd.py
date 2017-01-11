@@ -1,12 +1,6 @@
 import json
 from pymods import MODS, FSUDL
 
-"""
-# TODO
-# -ore:aggregation
-# -edm:WebResource
-"""
-
 def write_json_ld(docs):
     with open('testData/fsu_nap01-1.json', 'w') as jsonOutput:
         json.dump(docs, jsonOutput, indent=2)
@@ -32,6 +26,23 @@ for record in testData.record_list:
             sourceResource['collection']['_:id'] = collection['url']
 
     # sourceResource.contributor
+    if MODS.name_constructor(record) is not None:
+        sourceResource['contributor'] = []
+        for name in MODS.name_constructor(record):
+            if name['roleText'] != 'Creator':
+                if 'valueURI' in name.keys():
+                    sourceResource['contributor'].append({ "@id": name['valueURI'],
+                                                       "name": name['text'] })
+                else:
+                    sourceResource['contributor'].append({ "name": name['text'] })
+            elif name['roleCode'] != 'cre':
+                if 'valueURI' in name.keys():
+                    sourceResource['contributor'].append({ "@id": name['valueURI'],
+                                                       "name": name['text'] })
+                else:
+                    sourceResource['contributor'].append({ "name": name['text'] })
+        if len(sourceResource['contributor']) < 1:
+            del sourceResource['contributor']
 
     # sourceResource.creator
     if MODS.name_constructor(record) is not None:
@@ -80,10 +91,12 @@ for record in testData.record_list:
         else:
             sourceResource['extent'] = MODS.extent(record)[0]
 
-    # sourceResource.format (i.e. Genre)
+    # sourceResource.format
+
+    # sourceResource.genre
     if MODS.genre(record) is not None:
         if len(MODS.genre(record)) > 1:
-            sourceResource['format'] = []
+            sourceResource['genre'] = []
             for format in MODS.genre(record):
                 format_elem = {}
                 for key, value in format.items():
@@ -91,7 +104,7 @@ for record in testData.record_list:
                         format_elem['name'] = value
                     elif 'valueURI' == key:
                         format_elem['@id'] = value
-                sourceResource['format'].append(format_elem)
+                sourceResource['genre'].append(format_elem)
         else:
             format_elem = {}
             for key, value in MODS.genre(record)[0].items():
@@ -99,11 +112,7 @@ for record in testData.record_list:
                     format_elem['name'] = value
                 elif 'valueURI' == key:
                     format_elem['@id'] = value
-            sourceResource['format'] = format_elem
-
-
-
-    # sourceResource.geographic
+            sourceResource['genre'] = format_elem
 
     # sourceResource.identifier
     sourceResource['identifier'] = { "@id": FSUDL.purl_search(record),
@@ -120,6 +129,16 @@ for record in testData.record_list:
                 language_dict = { "name": language['text'] }
             language_list.append(language_dict)
         sourceResource['language'] = language_list
+
+    # sourceResource.place
+
+    # sourceResource.publisher
+
+    # sourceResource.relation
+
+    # sourceResource.isReplacedBy
+
+    # sourceResource.replaces
 
     # sourceResource.rights
     if len(MODS.rights(record)) > 1:
@@ -153,11 +172,14 @@ for record in testData.record_list:
     # sourceResource.type
     sourceResource['type'] = MODS.type_of_resource(record)
 
-    # aggregation.data provider
+    # aggregation.dataProvider
     data_provider = "Florida State University Libraries"
 
+    # aggregation.isShownAt
+
     # aggregation.preview
-    preview = "link to thumbnail"
+    pid = FSUDL.pid_search(record)
+    preview = "http://fsu.digital.flvc.org/islandora/object/{0}/datastream/TN/view".format(pid)
 
     # aggregation.provider
     provider = {"name": "TO BE DETERMINED",
