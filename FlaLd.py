@@ -92,27 +92,34 @@ for record in testData.record_list:
             sourceResource['extent'] = MODS.extent(record)[0]
 
     # sourceResource.format
+    if MODS.form(record) is not None:
+        if len(MODS.form(record)) > 1:
+            sourceResource['format'] = []
+            for form in MODS.form(record):
+                sourceResource['format'].append(form)
+        else:
+            sourceResource['format'] = MODS.form(record)[0]
 
     # sourceResource.genre
     if MODS.genre(record) is not None:
         if len(MODS.genre(record)) > 1:
             sourceResource['genre'] = []
-            for format in MODS.genre(record):
-                format_elem = {}
-                for key, value in format.items():
+            for genre in MODS.genre(record):
+                genre_elem = {}
+                for key, value in genre.items():
                     if 'term' == key:
-                        format_elem['name'] = value
+                        genre_elem['name'] = value
                     elif 'valueURI' == key:
-                        format_elem['@id'] = value
-                sourceResource['genre'].append(format_elem)
+                        genre_elem['@id'] = value
+                sourceResource['genre'].append(genre_elem)
         else:
-            format_elem = {}
+            genre_elem = {}
             for key, value in MODS.genre(record)[0].items():
                 if 'term' == key:
-                    format_elem['name'] = value
+                    genre_elem['name'] = value
                 elif 'valueURI' == key:
-                    format_elem['@id'] = value
-            sourceResource['genre'] = format_elem
+                    genre_elem['@id'] = value
+            sourceResource['genre'] = genre_elem
 
     # sourceResource.identifier
     sourceResource['identifier'] = { "@id": FSUDL.purl_search(record),
@@ -133,6 +140,13 @@ for record in testData.record_list:
     # sourceResource.place
 
     # sourceResource.publisher
+    if MODS.publisher(record) is not None:
+        if len(MODS.publisher(record)) > 1:
+            sourceResource['publisher'] = []
+            for publisher in MODS.publisher(record):
+                sourceResource['publisher'].append(publisher)
+        else:
+            sourceResource['publisher'] = MODS.publisher(record)[0]
 
     # sourceResource.relation
 
@@ -193,6 +207,6 @@ for record in testData.record_list:
                  "preview": preview,
                  "provider": provider})
 
-#write_json_ld(docs)
+write_json_ld(docs)
 
-print(json.dumps(docs, indent=2))
+#print(json.dumps(docs, indent=2))

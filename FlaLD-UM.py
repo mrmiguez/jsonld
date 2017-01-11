@@ -11,6 +11,10 @@ nameSpace_default = { None: '{http://www.loc.gov/mods/v3}',
                       'repox': '{http://repox.ist.utl.pt}',
                       'oai_qdc': '{http://worldcat.org/xmlschemas/qdc-1.0/}'}
 
+def write_json_ld(docs):
+    with open('testData/um_um-1.json', 'w') as jsonOutput:
+        json.dump(docs, jsonOutput, indent=2)
+
 class OAI_QDC:
 
     def __init__(self, input_file=None):
@@ -90,6 +94,12 @@ with open('testData/um_um-1.xml') as testData:
             # sourceResource.collection
 
             # sourceResource.contributor
+            if OAI_QDC.simple_lookup(record, './/{0}contributor'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['contributor'] = []
+                for element in OAI_QDC.split_lookup(record, './/{0}contributor'.format(nameSpace_default['dc'])):
+                    for name in element:
+                        if len(term) > 0:
+                            sourceResource['contributor'].append({"name": name.strip(" ") })
 
             # sourceResource.creator
             if OAI_QDC.simple_lookup(record, './/{0}creator'.format(nameSpace_default['dc'])) is not None:
@@ -112,8 +122,9 @@ with open('testData/um_um-1.xml') as testData:
             # sourceResource.geographic
 
             # sourceResource.identifier
-            if OAI_QDC.simple_lookup(record, './/{0}identifier'.format(nameSpace_default['dc'])) is not None:
-                sourceResource['identifier'] = OAI_QDC.simple_lookup(record, './/{0}identifier'.format(nameSpace_default['dc']))
+            local_id = OAI_QDC.simple_lookup(record, './/{0}identifier'.format(nameSpace_default['dc']))
+            if local_id is not None:
+                sourceResource['identifier'] = local_id[0]
 
             # sourceResource.language
             if OAI_QDC.simple_lookup(record, './/{0}language'.format(nameSpace_default['dc'])) is not None:
@@ -166,7 +177,13 @@ with open('testData/um_um-1.xml') as testData:
             # aggregation.isShownAt
 
             # aggregation.preview
-            preview = "temp"
+            collectionID = local_id[0].split('/')[6]
+            itemID = local_id[0].split('/')[8]
+            cdm_url_prefix = { 'um': 'http://merrick.library.miami.edu' }
+            cdm_url_path = '/utils/getthumbnail/collection/{0}/id/{1}'.format(collectionID, itemID)
+
+            if "merrick.library.miami.edu" in local_id[0]:
+                preview = cdm_url_prefix['um'] + cdm_url_path
 
             # aggregation.provider
             provider = {"name": "TO BE DETERMINED",
@@ -180,4 +197,6 @@ with open('testData/um_um-1.xml') as testData:
                          "preview": preview,
                          "provider": provider})
 
-print(json.dumps(docs, indent=2))
+
+write_json_ld(docs)
+#print(json.dumps(docs, indent=2))
