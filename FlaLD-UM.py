@@ -134,7 +134,7 @@ with open('testData/um_um-1.xml') as testData:
                 for element in OAI_QDC.split_lookup(record, './/{0}extent'.format(nameSpace_default['dcterms'])):
                     for term in element:
                         if len(term) > 0:
-                            sourceResource['extent'].append(term)
+                            sourceResource['extent'].append(term.strip(' '))
 
             # sourceResource.format
 
@@ -147,9 +147,7 @@ with open('testData/um_um-1.xml') as testData:
                             file_format = term.lower()
                             pass
                         elif len(term) > 0:
-                            sourceResource['genre'].append(term)
-
-            # sourceResource.geographic
+                            sourceResource['genre'].append(term.strip(' '))
 
             # sourceResource.identifier
             local_id = OAI_QDC.simple_lookup(record, './/{0}identifier'.format(nameSpace_default['dc']))
@@ -165,8 +163,17 @@ with open('testData/um_um-1.xml') as testData:
                     sourceResource['language'] = { "iso_639_3": language }
 
             # sourceResource.place : sourceResource['spatial']
+            if OAI_QDC.simple_lookup(record, './/{0}spatial'.format(nameSpace_default['dcterms'])) is not None:
+                sourceResource['spatial'] = []
+                for element in OAI_QDC.split_lookup(record, './/{0}spatial'.format(nameSpace_default['dcterms'])):
+                    for term in element:
+                        if len(term) > 0:
+                            sourceResource['spatial'].append(term.strip(' '))
 
             # sourceResource.publisher
+            publisher = OAI_QDC.simple_lookup(record, './/{0}publisher'.format(nameSpace_default['dc']))
+            if publisher is not None:
+                sourceResource['publisher'] = publisher
 
             # sourceResource.relation
 
@@ -235,6 +242,6 @@ with open('testData/um_um-1.xml') as testData:
                          "preview": preview,
                          "provider": provider})
 
-            print(sourceResource['genre']) # elem test for individual records
+            #print(sourceResource['genre']) # elem test for individual records
 #write_json_ld(docs) # write test
-#print(json.dumps(docs, indent=2)) # dump test
+print(json.dumps(docs, indent=2)) # dump test

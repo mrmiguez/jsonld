@@ -232,6 +232,6 @@ for record in testData.record_list:
                  "provider": provider})
 
 
-#write_json_ld(docs)
+write_json_ld(docs)
 
-print(json.dumps(docs, indent=2))
+#print(json.dumps(docs, indent=2))
