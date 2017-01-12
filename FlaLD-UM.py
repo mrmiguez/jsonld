@@ -127,6 +127,19 @@ with open('testData/um_um-1.xml') as testData:
                 sourceResource['date'] = { "begin": date, "end": date }
 
             # sourceResource.description
+            description = []
+            if OAI_QDC.simple_lookup(record, './/{0}description'.format(nameSpace_default['dc'])) is not None:
+                for item in OAI_QDC.simple_lookup(record, './/{0}description'.format(nameSpace_default['dc'])):
+                    description.append(item)
+            if OAI_QDC.simple_lookup(record, './/{0}abstract'.format(nameSpace_default['dcterms'])) is not None:
+                for item in OAI_QDC.simple_lookup(record, './/{0}abstract'.format(nameSpace_default['dcterms'])):
+                    description.append(item)
+            if len(description) > 1:
+                sourceResource['description'] = []
+                for item in description:
+                    sourceResource['description'].append(item)
+            elif len(description) == 1:
+                sourceResource['description'] = description[0]
 
             # sourceResource.extent
             if OAI_QDC.simple_lookup(record, './/{0}extent'.format(nameSpace_default['dcterms'])) is not None:
@@ -148,6 +161,8 @@ with open('testData/um_um-1.xml') as testData:
                             pass
                         elif len(term) > 0:
                             sourceResource['genre'].append(term.strip(' '))
+                if len(sourceResource['genre']) == 0:
+                    del sourceResource['genre']
 
             # sourceResource.identifier
             local_id = OAI_QDC.simple_lookup(record, './/{0}identifier'.format(nameSpace_default['dc']))
@@ -155,12 +170,14 @@ with open('testData/um_um-1.xml') as testData:
                 sourceResource['identifier'] = local_id[0]
 
             # sourceResource.language
-            language = OAI_QDC.simple_lookup(record, './/{0}language'.format(nameSpace_default['dc']))
-            if language is not None:
-                if len(language) > 3:
-                    sourceResource['language'] = {"name": language}
-                else:
-                    sourceResource['language'] = { "iso_639_3": language }
+            if OAI_QDC.simple_lookup(record, './/{0}language'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['language'] = []
+                for element in OAI_QDC.split_lookup(record, './/{0}language'.format(nameSpace_default['dc'])):
+                    for term in element:
+                        if len(term) > 3:
+                            sourceResource['language'] = {"name": term }
+                        else:
+                            sourceResource['language'] = { "iso_639_3": term }
 
             # sourceResource.place : sourceResource['spatial']
             if OAI_QDC.simple_lookup(record, './/{0}spatial'.format(nameSpace_default['dcterms'])) is not None:
@@ -203,16 +220,18 @@ with open('testData/um_um-1.xml') as testData:
                         if len(term) > 0:
                             sourceResource['subject'].append({"name": term.strip(" ") })
 
-
             # sourceResource.title
             title = OAI_QDC.simple_lookup(record, './/{0}title'.format(nameSpace_default['dc']))
             if title is not None:
                 sourceResource['title'] = title
 
             # sourceResource.type
-            type = OAI_QDC.simple_lookup(record, './/{0}type'.format(nameSpace_default['dc']))
-            if type is not None:
-                sourceResource['type'] = type
+            if OAI_QDC.simple_lookup(record, './/{0}type'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['type'] = []
+                for element in OAI_QDC.split_lookup(record, './/{0}type'.format(nameSpace_default['dc'])):
+                    for term in element:
+                        if len(term) > 0:
+                            sourceResource['type'].append(term.strip(" "))
 
             # webResource.fileFormat
 
@@ -242,6 +261,5 @@ with open('testData/um_um-1.xml') as testData:
                          "preview": preview,
                          "provider": provider})
 
-            #print(sourceResource['genre']) # elem test for individual records
-#write_json_ld(docs) # write test
-print(json.dumps(docs, indent=2)) # dump test
+write_json_ld(docs) # write test
+# print(json.dumps(docs, indent=2)) # dump test
