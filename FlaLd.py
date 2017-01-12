@@ -1,4 +1,5 @@
 import json
+import requests
 from pymods import MODS, FSUDL
 
 def write_json_ld(docs):
@@ -137,7 +138,30 @@ for record in testData.record_list:
             language_list.append(language_dict)
         sourceResource['language'] = language_list
 
-    # sourceResource.place
+    # sourceResource.sourceResource.place : sourceResource['spatial']
+    geo_code_list = MODS.geographic_code(record)
+    if geo_code_list is not None:
+        sourceResource['spatial'] = []
+        for geo_code in geo_code_list:
+            tgn_prefix = 'http://vocab.getty.edu/tgn/'
+
+            '''
+            # Implementation using the schema.org namespace
+            # tgn_geometry = geo_code + '-geometry.jsonld'
+            # geometry = requests.get(tgn_prefix + tgn_geometry)
+            # geometry_json = json.loads(geometry.text)
+            # lat = geometry_json['http://schema.org/latitude']['@value']
+            # long = geometry_json['http://schema.org/longitude']['@value']
+            '''
+
+            tgn_place = geo_code + '-place.jsonld'
+            place = requests.get(tgn_prefix + tgn_place)
+            place_json = json.loads(place.text)
+            lat = place_json['http://www.w3.org/2003/01/geo/wgs84_pos#lat']['@value']
+            long = place_json['http://www.w3.org/2003/01/geo/wgs84_pos#long']['@value']
+            sourceResource['spatial'].append({ "lat": lat,
+                                               "long": long,
+                                               "_:attribution": "This record contains information from Thesaurus of Geographic Names (TGN)® which is made available under the ODC Attribution License." })
 
     # sourceResource.publisher
     if MODS.publisher(record) is not None:
@@ -207,6 +231,7 @@ for record in testData.record_list:
                  "preview": preview,
                  "provider": provider})
 
-write_json_ld(docs)
 
-#print(json.dumps(docs, indent=2))
+#write_json_ld(docs)
+
+print(json.dumps(docs, indent=2))

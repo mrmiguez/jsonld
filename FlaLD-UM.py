@@ -164,7 +164,7 @@ with open('testData/um_um-1.xml') as testData:
                 else:
                     sourceResource['language'] = { "iso_639_3": language }
 
-            # sourceResource.place
+            # sourceResource.place : sourceResource['spatial']
 
             # sourceResource.publisher
 

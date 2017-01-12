@@ -181,6 +181,8 @@
         <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n79058874">
           <geographic>Paris (France)</geographic>
         </subject>
+        <subject><geographicCode>7013938</geographicCode></subject>
+        <subject><geographicCode>7014652</geographicCode></subject>
       </mods:mods>
     </repox:metadata>
   </repox:record>
@@ -231,6 +233,7 @@
           <topic>History</topic>
           <temporal>19th century</temporal>
         </subject>
+        <subject><geographicCode>7014652</geographicCode></subject>
       </mods:mods>
     </repox:metadata>
   </repox:record>
