@@ -1,15 +1,17 @@
 import json
 import requests
 from pymods import MODS, FSUDL
+from lxml import etree #test
 
 def write_json_ld(docs):
-    with open('testData/fsu_nap01-1.json', 'w') as jsonOutput:
+    with open('testData/fsu_digital_library-1.json', 'w') as jsonOutput:
         json.dump(docs, jsonOutput, indent=2)
 
 
-testData = MODS('testData/fsu_nap01-1.xml')
+testData = MODS('testData/fsu_digital_library-1.xml')
 docs = []
 for record in testData.record_list:
+    #print(FSUDL.pid_search(record)) #test
     sourceResource = {}
 
     # sourceResource.alternative
@@ -22,45 +24,69 @@ for record in testData.record_list:
     # sourceResource.collection
     if MODS.collection(record) is not None:
         collection = MODS.collection(record)
-        sourceResource['collection'] = { "name": collection['title'], "host": collection['location'] }
+        sourceResource['collection'] = {}
+        if 'title' in collection.keys():
+            sourceResource['collection']['name'] = collection['title']
+        if 'location' in collection.keys():
+            sourceResource['collection']['host'] = collection['location']
         if 'url' in collection.keys():
             sourceResource['collection']['_:id'] = collection['url']
 
     # sourceResource.contributor
-    if MODS.name_constructor(record) is not None:
-        sourceResource['contributor'] = []
-        for name in MODS.name_constructor(record):
-            if name['roleText'] != 'Creator':
-                if 'valueURI' in name.keys():
-                    sourceResource['contributor'].append({ "@id": name['valueURI'],
-                                                       "name": name['text'] })
-                else:
-                    sourceResource['contributor'].append({ "name": name['text'] })
-            elif name['roleCode'] != 'cre':
-                if 'valueURI' in name.keys():
-                    sourceResource['contributor'].append({ "@id": name['valueURI'],
-                                                       "name": name['text'] })
-                else:
-                    sourceResource['contributor'].append({ "name": name['text'] })
-        if len(sourceResource['contributor']) < 1:
-            del sourceResource['contributor']
+    try: #debug
+
+        if MODS.name_constructor(record) is not None:
+            sourceResource['contributor'] = []
+            for name in MODS.name_constructor(record):
+
+                    if name['roleText'] != 'Creator':
+                        if 'valueURI' in name.keys():
+                            sourceResource['contributor'].append({ "@id": name['valueURI'],
+                                                               "name": name['text'] })
+                        else:
+                            sourceResource['contributor'].append({ "name": name['text'] })
+                    if name['roleCode'] != 'cre':
+                        if 'valueURI' in name.keys():
+                            sourceResource['contributor'].append({ "@id": name['valueURI'],
+                                                               "name": name['text'] })
+                        else:
+                            sourceResource['contributor'].append({ "name": name['text'] })
+
+            if len(sourceResource['contributor']) < 1:
+                del sourceResource['contributor']
+
+    except KeyError as err:  #debug
+        with open('errorDump.txt', 'a') as dumpFile:
+            dumpFile.write('KeyError: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+            dumpFile.write('{0}\n'.format(name))
+            dumpFile.write(etree.tostring(record).decode('utf-8'))
+        pass
 
     # sourceResource.creator
-    if MODS.name_constructor(record) is not None:
-        sourceResource['creator'] = []
-        for name in MODS.name_constructor(record):
-            if name['roleText'] == 'Creator':
-                if 'valueURI' in name.keys():
-                    sourceResource['creator'].append({ "@id": name['valueURI'],
-                                                       "name": name['text'] })
-                else:
-                    sourceResource['creator'].append({ "name": name['text'] })
-            elif name['roleCode'] == 'cre':
-                if 'valueURI' in name.keys():
-                    sourceResource['creator'].append({ "@id": name['valueURI'],
-                                                       "name": name['text'] })
-                else:
-                    sourceResource['creator'].append({ "name": name['text'] })
+    try:  # debug
+
+        if MODS.name_constructor(record) is not None:
+            sourceResource['creator'] = []
+            for name in MODS.name_constructor(record):
+                if name['roleText'] == 'Creator':
+                    if 'valueURI' in name.keys():
+                        sourceResource['creator'].append({ "@id": name['valueURI'],
+                                                           "name": name['text'] })
+                    else:
+                        sourceResource['creator'].append({ "name": name['text'] })
+                elif name['roleCode'] == 'cre':
+                    if 'valueURI' in name.keys():
+                        sourceResource['creator'].append({ "@id": name['valueURI'],
+                                                           "name": name['text'] })
+                    else:
+                        sourceResource['creator'].append({ "name": name['text'] })
+
+    except KeyError as err:  # debug
+        with open('errorDump.txt', 'a') as dumpFile:
+            dumpFile.write('KeyError: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+            dumpFile.write('{0}\n'.format(name))
+            dumpFile.write(etree.tostring(record).decode('utf-8'))
+        pass
 
     # sourceResource.date
     if MODS.date_constructor(record) is not None:
@@ -127,16 +153,28 @@ for record in testData.record_list:
                                      "text": FSUDL.local_identifier(record) }
 
     # sourceResource.language
-    if MODS.language(record) is not None:
-        language_list = []
-        for language in MODS.language(record):
-            if len(language) > 1:
-                language_dict = { "name": language['text'],
-                                  "iso_639_3": language['code'] }
-            else:
-                language_dict = { "name": language['text'] }
-            language_list.append(language_dict)
-        sourceResource['language'] = language_list
+    try: #debug
+
+        if MODS.language(record) is not None:
+            language_list = []
+            for language in MODS.language(record):
+                if len(language) > 1:
+                    language_dict = { "name": language['text'],
+                                      "iso_639_3": language['code'] }
+                else:
+                    if 'text' in language.keys():
+                        language_dict = { "name": language['text'] }
+                    else:
+                        pass
+                language_list.append(language_dict)
+            sourceResource['language'] = language_list
+
+    except KeyError as err: #debug
+        with open('errorDump.txt', 'a') as dumpFile:
+            dumpFile.write('KeyError: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+            dumpFile.write('{0}\n'.format(language))
+            dumpFile.write(etree.tostring(record).decode('utf-8'))
+        pass
 
     # sourceResource.sourceResource.place : sourceResource['spatial']
     geo_code_list = MODS.geographic_code(record)
@@ -179,11 +217,16 @@ for record in testData.record_list:
     # sourceResource.replaces
 
     # sourceResource.rights
-    if len(MODS.rights(record)) > 1:
-        sourceResource['rights'] = {"@id": MODS.rights(record)['URI'],
-                                    "text": MODS.rights(record)['text']}
-    else:
-        sourceResource['rights'] = MODS.rights(record)['text']
+    try:
+
+        if len(MODS.rights(record)) > 1:
+            sourceResource['rights'] = {"@id": MODS.rights(record)['URI'],
+                                        "text": MODS.rights(record)['text']}
+        else:
+            sourceResource['rights'] = MODS.rights(record)['text']
+
+    except TypeError:
+        pass
 
     # sourceResource.subject
     if MODS.subject(record) is not None:
@@ -205,7 +248,11 @@ for record in testData.record_list:
                                                       "name": subject['text'] })
 
     # sourceResource.title
-    sourceResource['title'] = MODS.title_constructor(record)[0]
+    try: # debug
+        sourceResource['title'] = MODS.title_constructor(record)[0]
+
+    except IndexError: # debug
+        print(FSUDL.pid_search(record))
 
     # sourceResource.type
     sourceResource['type'] = MODS.type_of_resource(record)
@@ -232,6 +279,6 @@ for record in testData.record_list:
                  "provider": provider})
 
 
-write_json_ld(docs)
+# write_json_ld(docs)
 
-# print(json.dumps(docs, indent=2))
+print(json.dumps(docs, indent=2))
