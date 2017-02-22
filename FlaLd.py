@@ -38,7 +38,7 @@ for record in testData.record_list:
         if MODS.name_constructor(record) is not None:
             sourceResource['contributor'] = []
             for name in MODS.name_constructor(record):
-                #print(name.keys()) # test
+
                 if all(key in name.keys() for key in ('roleText' or 'roleCode')):
                     if name['roleText'] != 'Creator':
                         if 'valueURI' in name.keys():
@@ -52,6 +52,7 @@ for record in testData.record_list:
                                                                "name": name['text'] })
                         else:
                             sourceResource['contributor'].append({ "name": name['text'] })
+
                 else:
                     if 'valueURI' in name.keys():
                         sourceResource['contributor'].append({"@id": name['valueURI'],
@@ -61,13 +62,6 @@ for record in testData.record_list:
 
             if len(sourceResource['contributor']) < 1:
                 del sourceResource['contributor']
-
-#    except KeyError as err:  #debug
-#        with open('errorDump.txt', 'a') as dumpFile:
-#            dumpFile.write('KeyError - sourceResource.contributor: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
-#            dumpFile.write('{0}\n'.format(name))
-#            dumpFile.write(etree.tostring(record).decode('utf-8'))
-#        pass
 
     except AttributeError as err: #debug
         with open('errorDump.txt', 'a') as dumpFile:
@@ -82,6 +76,7 @@ for record in testData.record_list:
         if MODS.name_constructor(record) is not None:
             sourceResource['creator'] = []
             for name in MODS.name_constructor(record):
+
                 if all(key in name.keys() for key in ('roleText' or 'roleCode')):
                     if name['roleText'] == 'Creator':
                         if 'valueURI' in name.keys():
@@ -97,13 +92,6 @@ for record in testData.record_list:
                             sourceResource['creator'].append({ "name": name['text'] })
                 else:
                     pass
-
-#    except KeyError as err:  # debug
-#        with open('errorDump.txt', 'a') as dumpFile:
-#            dumpFile.write('KeyError - sourceResource.creator: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
-#            dumpFile.write('{0}\n'.format(name))
-#            dumpFile.write(etree.tostring(record).decode('utf-8'))
-#        pass
 
     except AttributeError as err: # debug
         with open('errorDump.txt', 'a') as dumpFile:
