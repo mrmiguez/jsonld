@@ -5,7 +5,7 @@ from lxml import etree #test
 
 def write_json_ld(docs):
     with open('testData/fsu_digital_library-1.json', 'w') as jsonOutput:
-        json.dump(docs, jsonOutput, indent=2)
+        json.dump(docs, jsonOutput)
 
 
 testData = MODS('testData/fsu_digital_library-1.xml')
@@ -254,37 +254,47 @@ for record in testData.record_list:
         pass
 
     # sourceResource.subject
-    try: #debug
+    #try: #debug
 
-        if MODS.subject(record) is not None:
-            sourceResource['subject'] = []
-            for subject in MODS.subject(record):
-                if 'authority' in subject.keys() and subject['authority'] is not None:
+    if MODS.subject(record) is not None:
+        sourceResource['subject'] = []
+        for subject in MODS.subject(record):
+            if 'authority' in subject.keys() and subject['authority'] is not None:
 
-                    # LCSH subjects
-                    if 'lcsh' in subject['authority'].lower():
-                        subject_term = ""
-                        for child in subject['children']:
-                            #print(child) # test
-                            if 'term' in child.keys():
-                                subject_term = subject_term + '--' + child['term']
-                        sourceResource['subject'].append({"@id": subject['valueURI'],
-                                                          "name": subject_term.strip('.,-') })
-
-                    # LCNAF subjects
-                    elif 'naf' or 'lcnaf' in subject['authority'].lower():
-                        sourceResource['subject'].append({"@id": subject['valueURI'],
-                                                          "name": subject['text'] })
-
-                elif subject['authority'] == None:
+                # LCSH subjects
+                if 'lcsh' in subject['authority'].lower():
+                    subject_term = ""
                     for child in subject['children']:
+                        #print(child) # test
+                        if 'term' in child.keys():
+                            subject_term = subject_term + '--' + child['term']
+                    sourceResource['subject'].append({"@id": subject['valueURI'],
+                                                      "name": subject_term.strip('.,-') })
+
+                # LCNAF subjects
+                elif 'naf' or 'lcnaf' in subject['authority'].lower():
+                    sourceResource['subject'].append({"@id": subject['valueURI'],
+                                                      "name": subject['text'] })
+
+            elif 'authority' not in subject.keys() and 'children' in subject.keys():
+                for child in subject['children']:
+                    if 'term' not in child.keys():
+
+                        try:
+                            sourceResource['subject'].append({'name': child['children'][0]['term']})
+
+                        except KeyError as err:
+                            print('KeyError: {0}, {1}'.format(FSUDL.pid_search(record), err)) #test... redirect to log?
+                            pass
+
+                    else:
                         sourceResource['subject'].append({'name': child['term']})
 
-    except KeyError as err: #debug
-        with open('errorDump.txt', 'a') as dumpFile:
-            dumpFile.write('KeyError - sourceResource.subject: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
-            dumpFile.write(etree.tostring(record).decode('utf-8'))
-        pass
+    #except KeyError as err: #debug
+    #    with open('errorDump.txt', 'a') as dumpFile:
+    #        dumpFile.write('KeyError - sourceResource.subject: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+    #        dumpFile.write(etree.tostring(record).decode('utf-8'))
+    #    pass
 
     # sourceResource.title
     try: # debug
