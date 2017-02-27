@@ -33,72 +33,72 @@ for record in testData.record_list:
             sourceResource['collection']['_:id'] = collection['url']
 
     # sourceResource.contributor
-    try: #debug
+    #try: #debug
 
-        if MODS.name_constructor(record) is not None:
-            sourceResource['contributor'] = []
-            for name in MODS.name_constructor(record):
+    if MODS.name_constructor(record) is not None:
+        sourceResource['contributor'] = []
+        for name in MODS.name_constructor(record):
 
-                if all(key in name.keys() for key in ('roleText' or 'roleCode')):
-                    if name['roleText'] != 'Creator':
-                        if 'valueURI' in name.keys():
-                            sourceResource['contributor'].append({ "@id": name['valueURI'],
-                                                               "name": name['text'] })
-                        else:
-                            sourceResource['contributor'].append({ "name": name['text'] })
-                    elif name['roleCode'] != 'cre':
-                        if 'valueURI' in name.keys():
-                            sourceResource['contributor'].append({ "@id": name['valueURI'],
-                                                               "name": name['text'] })
-                        else:
-                            sourceResource['contributor'].append({ "name": name['text'] })
-
-                else:
+            if all(key in name.keys() for key in ('roleText' or 'roleCode')):
+                if name['roleText'] != 'Creator':
                     if 'valueURI' in name.keys():
-                        sourceResource['contributor'].append({"@id": name['valueURI'],
-                                                              "name": name['text']})
+                        sourceResource['contributor'].append({ "@id": name['valueURI'],
+                                                           "name": name['text'] })
                     else:
-                        sourceResource['contributor'].append({"name": name['text']})
+                        sourceResource['contributor'].append({ "name": name['text'] })
+                elif name['roleCode'] != 'cre':
+                    if 'valueURI' in name.keys():
+                        sourceResource['contributor'].append({ "@id": name['valueURI'],
+                                                           "name": name['text'] })
+                    else:
+                        sourceResource['contributor'].append({ "name": name['text'] })
 
-            if len(sourceResource['contributor']) < 1:
-                del sourceResource['contributor']
+            else:
+                if 'valueURI' in name.keys():
+                    sourceResource['contributor'].append({"@id": name['valueURI'],
+                                                          "name": name['text']})
+                else:
+                    sourceResource['contributor'].append({"name": name['text']})
 
-    except AttributeError as err: #debug
-        with open('errorDump.txt', 'a') as dumpFile:
-            dumpFile.write('AttributeError - sourceResource.contributor: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
-            dumpFile.write('{0}\n'.format(name))
-            dumpFile.write(etree.tostring(record).decode('utf-8'))
-        pass
+        if len(sourceResource['contributor']) < 1:
+            del sourceResource['contributor']
+
+    #except AttributeError as err: #debug
+    #    with open('errorDump.txt', 'a') as dumpFile:
+    #        dumpFile.write('AttributeError - sourceResource.contributor: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+    #        dumpFile.write('{0}\n'.format(name))
+    #        dumpFile.write(etree.tostring(record).decode('utf-8'))
+    #    pass
 
     # sourceResource.creator
-    try:  # debug
+    #try:  # debug
 
-        if MODS.name_constructor(record) is not None:
-            sourceResource['creator'] = []
-            for name in MODS.name_constructor(record):
+    if MODS.name_constructor(record) is not None:
+        sourceResource['creator'] = []
+        for name in MODS.name_constructor(record):
 
-                if all(key in name.keys() for key in ('roleText' or 'roleCode')):
-                    if name['roleText'] == 'Creator':
-                        if 'valueURI' in name.keys():
-                            sourceResource['creator'].append({ "@id": name['valueURI'],
-                                                               "name": name['text'] })
-                        else:
-                            sourceResource['creator'].append({ "name": name['text'] })
-                    elif name['roleCode'] == 'cre':
-                        if 'valueURI' in name.keys():
-                            sourceResource['creator'].append({ "@id": name['valueURI'],
-                                                               "name": name['text'] })
-                        else:
-                            sourceResource['creator'].append({ "name": name['text'] })
-                else:
-                    pass
+            if all(key in name.keys() for key in ('roleText' or 'roleCode')):
+                if name['roleText'] == 'Creator':
+                    if 'valueURI' in name.keys():
+                        sourceResource['creator'].append({ "@id": name['valueURI'],
+                                                           "name": name['text'] })
+                    else:
+                        sourceResource['creator'].append({ "name": name['text'] })
+                elif name['roleCode'] == 'cre':
+                    if 'valueURI' in name.keys():
+                        sourceResource['creator'].append({ "@id": name['valueURI'],
+                                                           "name": name['text'] })
+                    else:
+                        sourceResource['creator'].append({ "name": name['text'] })
+            else:
+                pass
 
-    except AttributeError as err: # debug
-        with open('errorDump.txt', 'a') as dumpFile:
-            dumpFile.write('AttributeError - sourceResource.creator: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
-            dumpFile.write('{0}\n'.format(name))
-            dumpFile.write(etree.tostring(record).decode('utf-8'))
-        pass
+    #except AttributeError as err: # debug
+    #    with open('errorDump.txt', 'a') as dumpFile:
+    #        dumpFile.write('AttributeError - sourceResource.creator: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+    #        dumpFile.write('{0}\n'.format(name))
+    #        dumpFile.write(etree.tostring(record).decode('utf-8'))
+    #    pass
 
     # sourceResource.date
     if MODS.date_constructor(record) is not None:
@@ -165,62 +165,62 @@ for record in testData.record_list:
                                      "text": FSUDL.local_identifier(record) }
 
     # sourceResource.language
-    try: #debug
+    #try: #debug
 
-        if MODS.language(record) is not None:
-            language_list = []
-            for language in MODS.language(record):
-                if len(language) > 1:
-                    language_dict = { "name": language['text'],
-                                      "iso_639_3": language['code'] }
+    if MODS.language(record) is not None:
+        language_list = []
+        for language in MODS.language(record):
+            if len(language) > 1:
+                language_dict = { "name": language['text'],
+                                  "iso_639_3": language['code'] }
+            else:
+                if 'text' in language.keys():
+                    language_dict = { "name": language['text'] }
                 else:
-                    if 'text' in language.keys():
-                        language_dict = { "name": language['text'] }
-                    else:
-                        pass
-                language_list.append(language_dict)
-            sourceResource['language'] = language_list
+                    pass
+            language_list.append(language_dict)
+        sourceResource['language'] = language_list
 
-    except KeyError as err: #debug
-        with open('errorDump.txt', 'a') as dumpFile:
-            dumpFile.write('KeyError - sourceResource.language: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
-            dumpFile.write('{0}\n'.format(language))
-            dumpFile.write(etree.tostring(record).decode('utf-8'))
-        pass
+    #except KeyError as err: #debug
+    #    with open('errorDump.txt', 'a') as dumpFile:
+    #        dumpFile.write('KeyError - sourceResource.language: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+    #        dumpFile.write('{0}\n'.format(language))
+    #        dumpFile.write(etree.tostring(record).decode('utf-8'))
+    #    pass
 
     # sourceResource.sourceResource.place : sourceResource['spatial']
-    try:
+    #try:
 
-        geo_code_list = MODS.geographic_code(record)
-        if geo_code_list is not None:
-            sourceResource['spatial'] = []
-            for geo_code in geo_code_list:
-                tgn_prefix = 'http://vocab.getty.edu/tgn/'
+    geo_code_list = MODS.geographic_code(record)
+    if geo_code_list is not None:
+        sourceResource['spatial'] = []
+        for geo_code in geo_code_list:
+            tgn_prefix = 'http://vocab.getty.edu/tgn/'
 
-                '''
-                # Implementation using the schema.org namespace
-                # tgn_geometry = geo_code + '-geometry.jsonld'
-                # geometry = requests.get(tgn_prefix + tgn_geometry)
-                # geometry_json = json.loads(geometry.text)
-                # lat = geometry_json['http://schema.org/latitude']['@value']
-                # long = geometry_json['http://schema.org/longitude']['@value']
-                '''
+            '''
+            # Implementation using the schema.org namespace
+            # tgn_geometry = geo_code + '-geometry.jsonld'
+            # geometry = requests.get(tgn_prefix + tgn_geometry)
+            # geometry_json = json.loads(geometry.text)
+            # lat = geometry_json['http://schema.org/latitude']['@value']
+            # long = geometry_json['http://schema.org/longitude']['@value']
+            '''
 
-                tgn_place = geo_code + '-place.jsonld'
-                place = requests.get(tgn_prefix + tgn_place)
-                if place.status_code == 200:
-                    place_json = json.loads(place.text)
-                    lat = place_json['http://www.w3.org/2003/01/geo/wgs84_pos#lat']['@value']
-                    long = place_json['http://www.w3.org/2003/01/geo/wgs84_pos#long']['@value']
-                    sourceResource['spatial'].append({ "lat": lat,
-                                                       "long": long,
-                                                       "_:attribution": "This record contains information from Thesaurus of Geographic Names (TGN)® which is made available under the ODC Attribution License." })
+            tgn_place = geo_code + '-place.jsonld'
+            place = requests.get(tgn_prefix + tgn_place)
+            if place.status_code == 200:
+                place_json = json.loads(place.text)
+                lat = place_json['http://www.w3.org/2003/01/geo/wgs84_pos#lat']['@value']
+                long = place_json['http://www.w3.org/2003/01/geo/wgs84_pos#long']['@value']
+                sourceResource['spatial'].append({ "lat": lat,
+                                                   "long": long,
+                                                   "_:attribution": "This record contains information from Thesaurus of Geographic Names (TGN)® which is made available under the ODC Attribution License." })
 
-    except KeyError as err: #debug
-        with open('errorDump.txt', 'a') as dumpFile:
-            dumpFile.write('KeyError - sourceResource.sourceResource.place: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
-            dumpFile.write(etree.tostring(record).decode('utf-8'))
-        pass
+    #except KeyError as err: #debug
+    #    with open('errorDump.txt', 'a') as dumpFile:
+    #        dumpFile.write('KeyError - sourceResource.sourceResource.place: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+    #        dumpFile.write(etree.tostring(record).decode('utf-8'))
+    #    pass
 
     # sourceResource.publisher
     if MODS.publisher(record) is not None:
@@ -238,20 +238,20 @@ for record in testData.record_list:
     # sourceResource.replaces
 
     # sourceResource.rights
-    try:
+    #try:
 
-        if MODS.rights(record) is not None:
-            if len(MODS.rights(record)) > 1:
-                sourceResource['rights'] = {"@id": MODS.rights(record)['URI'],
-                                            "text": MODS.rights(record)['text']}
-            else:
-                sourceResource['rights'] = MODS.rights(record)['text']
+    if MODS.rights(record) is not None:
+        if len(MODS.rights(record)) > 1:
+            sourceResource['rights'] = {"@id": MODS.rights(record)['URI'],
+                                        "text": MODS.rights(record)['text']}
+        else:
+            sourceResource['rights'] = MODS.rights(record)['text']
 
-    except TypeError as err: #debug
-        with open('errorDump.txt', 'a') as dumpFile:
-            dumpFile.write('TypeError - sourceResource.rights: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
-            dumpFile.write(etree.tostring(record).decode('utf-8'))
-        pass
+    #except TypeError as err: #debug
+    #    with open('errorDump.txt', 'a') as dumpFile:
+    #        dumpFile.write('TypeError - sourceResource.rights: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+    #        dumpFile.write(etree.tostring(record).decode('utf-8'))
+    #    pass
 
     # sourceResource.subject
     #try: #debug
@@ -297,14 +297,14 @@ for record in testData.record_list:
     #    pass
 
     # sourceResource.title
-    try: # debug
-        sourceResource['title'] = MODS.title_constructor(record)[0]
+    #try: # debug
+    sourceResource['title'] = MODS.title_constructor(record)[0]
 
-    except IndexError: # debug
-        with open('errorDump.txt', 'a') as dumpFile:
-            dumpFile.write('IndexError - sourceResource.title: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
-            dumpFile.write(etree.tostring(record).decode('utf-8'))
-        pass
+    #except IndexError: # debug
+    #    with open('errorDump.txt', 'a') as dumpFile:
+    #        dumpFile.write('IndexError - sourceResource.title: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+    #        dumpFile.write(etree.tostring(record).decode('utf-8'))
+    #    pass
 
     # sourceResource.type
     sourceResource['type'] = MODS.type_of_resource(record)
