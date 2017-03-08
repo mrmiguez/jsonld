@@ -8,7 +8,7 @@ def write_json_ld(docs):
         json.dump(docs, jsonOutput)
 
 
-testData = MODS('testData/fsu_digital_library-1.xml')
+testData = MODS('testData/fsu_197619.xml')
 docs = []
 for record in testData.record_list:
     #print(FSUDL.pid_search(record)) #test
@@ -33,35 +33,42 @@ for record in testData.record_list:
             sourceResource['collection']['_:id'] = collection['url']
 
     # sourceResource.contributor
-    #try: #debug
+    try: #debug
 
-    if MODS.name_constructor(record) is not None:
-        sourceResource['contributor'] = []
-        for name in MODS.name_constructor(record):
+        if MODS.name_constructor(record) is not None:
+            sourceResource['contributor'] = []
+            for name in MODS.name_constructor(record):
 
-            if all(key in name.keys() for key in ('roleText' or 'roleCode')):
-                if name['roleText'] != 'Creator':
-                    if 'valueURI' in name.keys():
-                        sourceResource['contributor'].append({ "@id": name['valueURI'],
-                                                           "name": name['text'] })
-                    else:
-                        sourceResource['contributor'].append({ "name": name['text'] })
-                elif name['roleCode'] != 'cre':
-                    if 'valueURI' in name.keys():
-                        sourceResource['contributor'].append({ "@id": name['valueURI'],
-                                                           "name": name['text'] })
-                    else:
-                        sourceResource['contributor'].append({ "name": name['text'] })
+                if all(key in name.keys() for key in ('roleText' or 'roleCode')):
+                    if name['roleText'] != 'Creator':
+                        if 'valueURI' in name.keys():
+                            sourceResource['contributor'].append({ "@id": name['valueURI'],
+                                                               "name": name['text'] })
+                        else:
+                            sourceResource['contributor'].append({ "name": name['text'] })
+                    elif name['roleCode'] != 'cre':
+                        if 'valueURI' in name.keys():
+                            sourceResource['contributor'].append({ "@id": name['valueURI'],
+                                                               "name": name['text'] })
+                        else:
+                            sourceResource['contributor'].append({ "name": name['text'] })
 
-            else:
-                if 'valueURI' in name.keys():
-                    sourceResource['contributor'].append({"@id": name['valueURI'],
-                                                          "name": name['text']})
                 else:
-                    sourceResource['contributor'].append({"name": name['text']})
+                    if 'valueURI' in name.keys():
+                        sourceResource['contributor'].append({"@id": name['valueURI'],
+                                                              "name": name['text']} )
+                    else:
+                        sourceResource['contributor'].append({"name": name['text']} )
 
-        if len(sourceResource['contributor']) < 1:
-            del sourceResource['contributor']
+            if len(sourceResource['contributor']) < 1:
+                del sourceResource['contributor']
+
+    except KeyError as err: #debug
+        with open('errorDump.txt', 'a') as dumpFile:
+            dumpFile.write('AttributeError - sourceResource.contributor: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+            dumpFile.write('{0}\n'.format(name))
+            #dumpFile.write(etree.tostring(record).decode('utf-8'))
+        pass
 
     #except AttributeError as err: #debug
     #    with open('errorDump.txt', 'a') as dumpFile:
@@ -254,47 +261,23 @@ for record in testData.record_list:
     #    pass
 
     # sourceResource.subject
-    #try: #debug
+    try: #debug
 
-    if MODS.subject(record) is not None:
-        sourceResource['subject'] = []
-        for subject in MODS.subject(record):
-            if 'authority' in subject.keys() and subject['authority'] is not None:
+        if MODS.subject(record) is not None:
+            sourceResource['subject'] = []
+            for subject in MODS.subject(record):
 
-                # LCSH subjects
-                if 'lcsh' in subject['authority'].lower():
-                    subject_term = ""
-                    for child in subject['children']:
-                        #print(child) # test
-                        if 'term' in child.keys():
-                            subject_term = subject_term + '--' + child['term']
-                    sourceResource['subject'].append({"@id": subject['valueURI'],
-                                                      "name": subject_term.strip('.,-') })
-
-                # LCNAF subjects
-                elif 'naf' or 'lcnaf' in subject['authority'].lower():
+                if 'valueURI' in subject.keys():
                     sourceResource['subject'].append({"@id": subject['valueURI'],
                                                       "name": subject['text'] })
+                else:
+                    sourceResource['subject'].append({"name": subject['text'] })
 
-            elif 'authority' not in subject.keys() and 'children' in subject.keys():
-                for child in subject['children']:
-                    if 'term' not in child.keys():
-
-                        try:
-                            sourceResource['subject'].append({'name': child['children'][0]['term']})
-
-                        except KeyError as err:
-                            print('KeyError: {0}, {1}'.format(FSUDL.pid_search(record), err)) #test... redirect to log?
-                            pass
-
-                    else:
-                        sourceResource['subject'].append({'name': child['term']})
-
-    #except KeyError as err: #debug
-    #    with open('errorDump.txt', 'a') as dumpFile:
-    #        dumpFile.write('KeyError - sourceResource.subject: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
-    #        dumpFile.write(etree.tostring(record).decode('utf-8'))
-    #    pass
+    except TypeError as err: #debug
+        with open('errorDump.txt', 'a') as dumpFile:
+            dumpFile.write('KeyError - sourceResource.subject: {0}, {1}\n'.format(FSUDL.pid_search(record), err))
+            dumpFile.write(etree.tostring(record).decode('utf-8'))
+        pass
 
     # sourceResource.title
     #try: # debug
@@ -331,6 +314,6 @@ for record in testData.record_list:
                  "provider": provider})
 
 
-write_json_ld(docs)
+#write_json_ld(docs)
 
-#print(json.dumps(docs, indent=2)) #test
+print(json.dumps(docs, indent=2)) #test
