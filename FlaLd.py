@@ -8,7 +8,7 @@ def write_json_ld(docs):
         json.dump(docs, jsonOutput)
 
 
-testData = MODS('testData/fsu_197619.xml')
+testData = MODS('testData/fsu_digital_library-1.xml')
 docs = []
 for record in testData.record_list:
     #print(FSUDL.pid_search(record)) #test
@@ -314,6 +314,6 @@ for record in testData.record_list:
                  "provider": provider})
 
 
-#write_json_ld(docs)
+write_json_ld(docs)
 
-print(json.dumps(docs, indent=2)) #test
+#print(json.dumps(docs, indent=2)) #test

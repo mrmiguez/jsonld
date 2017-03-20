@@ -85,7 +85,7 @@ class OAI_QDC:
                 results.append(item.text.split(delimiter))
             return results
 
-with open('testData/um_um-1.xml') as testData:
+with open('testData/um_um-1.xml', encoding='utf-8') as testData:
     records = OAI_QDC(testData)
     docs = []
     for record in records.record_list:
