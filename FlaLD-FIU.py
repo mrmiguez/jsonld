@@ -13,16 +13,9 @@ nameSpace_default = { None: '{http://www.loc.gov/mods/v3}',
                       'repox': '{http://repox.ist.utl.pt}',
                       'oai_qdc': '{http://worldcat.org/xmlschemas/qdc-1.0/}'}
 
-IANA_type_list = []
-
-IANA_XML = requests.get('http://www.iana.org/assignments/media-types/media-types.xml')
-IANA_parsed = BeautifulSoup(IANA_XML.text, "lxml")
-for type in IANA_parsed.find_all('file'):
-    IANA_type_list.append(type.text)
-
 
 def write_json_ld(docs):
-    with open('testData/um_fiu-1.json', 'w') as jsonOutput:
+    with open('testData/fiu-repoxfull.json', 'w') as jsonOutput:
         json.dump(docs, jsonOutput, indent=2)
 
 
@@ -85,7 +78,7 @@ class OAI_QDC:
                 results.append(item.text.split(delimiter))
             return results
 
-with open('testData/um_fiu-1.xml', encoding='utf-8') as testData:
+with open('testData/fiu-repoxfull.xml', encoding='utf-8') as testData:
     records = OAI_QDC(testData)
     docs = []
     for record in records.record_list:
@@ -103,15 +96,46 @@ with open('testData/um_fiu-1.xml', encoding='utf-8') as testData:
             # sourceResource.collection
 
             # sourceResource.contributor
+            if OAI_QDC.simple_lookup(record, './/{0}contributor'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['contributor'] = []
+                for element in OAI_QDC.split_lookup(record, './/{0}contributor'.format(nameSpace_default['dc'])):
+                    for name in element:
+                        if len(name) > 0:
+                            sourceResource['contributor'].append({"name": name.strip(" ") })
+
 
             # sourceResource.creator
+            if OAI_QDC.simple_lookup(record, './/{0}creator'.format(nameSpace_default['dc'])) is not None:
+                sourceResource['creator'] = []
+                for element in OAI_QDC.split_lookup(record, './/{0}creator'.format(nameSpace_default['dc'])):
+                    for name in element:
+                        # need to test for ( Contributor ) and ( contributor )
+                        if len(name) > 0 and "ontributor )" not in name:
+                            sourceResource['creator'].append({"name": name.strip(" ") })
+                        elif "ontributor )" in name:
+                            if 'contributor' not in sourceResource.keys():
+                                sourceResource['contributor'] = []
+                                sourceResource['contributor'].append({"name": name.strip(" ").rstrip("( Contributor )").rstrip("( contributor )")})
+                            else:
+                                sourceResource['contributor'].append(
+                                    {"name": name.strip(" ").rstrip("( Contributor )").rstrip("( contributor )")})
 
             # sourceResource.date
+            date = OAI_QDC.simple_lookup(record, './/{0}date'.format(nameSpace_default['dc']))
+            if date is not None:
+                sourceResource['date'] = { "begin": date, "end": date }
 
             # sourceResource.description
-            description = OAI_QDC.simple_lookup(record, './/{0}description'.format(nameSpace_default['dc']))
-            if description is not None:
-                sourceResource['description'] = description
+            description = []
+            if OAI_QDC.simple_lookup(record, './/{0}description'.format(nameSpace_default['dc'])) is not None:
+                for item in OAI_QDC.simple_lookup(record, './/{0}description'.format(nameSpace_default['dc'])):
+                    description.append(item)
+            if len(description) > 1:
+                sourceResource['description'] = []
+                for item in description:
+                    sourceResource['description'].append(item)
+            elif len(description) == 1:
+                sourceResource['description'] = description[0]
 
             # sourceResource.extent
 
@@ -208,14 +232,21 @@ with open('testData/um_fiu-1.xml', encoding='utf-8') as testData:
             # aggregation.provider
             provider = {"name": "TO BE DETERMINED",
                         "@id": "DPLA provides?"}
+            try:
+                docs.append({"@context": "http://api.dp.la/items/context",
+                             "sourceResource": sourceResource,
+                             "aggregatedCHO": "#sourceResource",
+                             "dataProvider": data_provider,
+                             "isShownAt": PURL_match,
+                             #"preview": preview, #need details on a thumbnail service
+                             "provider": provider})
+            except NameError as err:
+                with open('errorDump.txt', 'a') as dumpFile:
+                    dumpFile.write('NameError - aggregation.preview: {0}\n'.format(err))
+                    # dumpFile.write('{0}\n'.format(name))
+                    dumpFile.write(etree.tostring(record).decode('utf-8'))
+                pass
 
-            docs.append({"@context": "http://api.dp.la/items/context",
-                         "sourceResource": sourceResource,
-                         "aggregatedCHO": "#sourceResource",
-                         "dataProvider": data_provider,
-                         "isShownAt": PURL_match,
-                         #"preview": preview,
-                         "provider": provider})
 
-#write_json_ld(docs) # write test
-print(json.dumps(docs, indent=2)) # dump test
+write_json_ld(docs) # write test
+#print(json.dumps(docs, indent=2)) # dump test
